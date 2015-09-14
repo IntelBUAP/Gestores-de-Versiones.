@@ -43,12 +43,17 @@ Conociendo más características de la misma, hará de nuestro ejercicio y desar
 
 ```
 ***
+#Como instalar CVS *(Links a tutoriales online)*
 
+###Windows
+[Como instalar CVS en Windows](http://nideaderedes.urlansoft.com/2006/04/23/cvs-en-windows-en-menos-de-10-minutos/)
 
+### Linux
+[Como instalar CVS en Linux](https://ubuntulife.wordpress.com/2007/05/28/instalar-un-servidor-de-cvs-en-ubuntu/)
 
+### MacOS
+[Como instalar CVS en Mac OS X](http://macprogramadores.org/?q=xcodecvs)
 
-
-`aoapedro@hotmail.com`
 
 ***
 
@@ -108,17 +113,50 @@ software libre del mundo
 (*gcc, emacs, guile, gtk, gimp, gnome, linux, etc.*).
 
 ***
+#Características
 
-#Como instalar CVS *(Links a tutoriales online)*
+1. Arquitectura cliente-servidor: 
+	* El servidor guarda la(s) versión(es) actual(es) del proyecto y su historial (una version consolidada del proyecto). 
+	* El cliente o estacion de trabajo hace modificaciones al codigo y realiza las pruebas necesarias para satisfacer los requerimientos. Los clientes se conectan al servidor para sacar una copia completa del proyecto, esto se hace eventualmente para que puedan trabajar con esa copia y más tarde ingresar sus cambios.
+	* Debe exitir comunicacion entre cliente y el servidor al realizar operaciones CVS como checkins o actualizaciones, pero si se quiere editar o manipular las versiones actuales de los archivos los clientes pueden bajar una copia y realizar las operaciones disponibles a nivel local.
 
-###Windows
-[Como instalar CVS en Windows](http://nideaderedes.urlansoft.com/2006/04/23/cvs-en-windows-en-menos-de-10-minutos/)
+2. Mantiene el registro de la historia de las versiones del programa de un proyecto solamente con desarrolladores locales.
 
-### Linux
-[Como instalar CVS en Linux](https://ubuntulife.wordpress.com/2007/05/28/instalar-un-servidor-de-cvs-en-ubuntu/)
+3. Originalmente, el servidor utilizaba un sistema operativo similar a Unix, aunque en la actualidad existen versiones de CVS en otros sistemas operativos como Windows.
 
-### MacOS
-[Como instalar CVS en Mac OS X](http://macprogramadores.org/?q=xcodecvs)
+4. Si se actualizan modificaciones, el servidor trata de acoplar las diferentes versiones. *(Si esto falla, por ejemplo debido a que dos clientes tratan de cambiar la misma línea en un archivo en particular, entonces el servidor deniega la segunda actualización e informa al cliente sobre el conflicto, que el usuario deberá resolver manualmente.)* Si la operación de ingreso tiene éxito, entonces los números de versión de todos los archivos implicados se incrementan automáticamente, y el servidor CVS almacena información sobre la actualización, que incluye:
+
+5. Descripción suministrada por el usuario
+	* Fecha 
+	* Nombre del autor
+	* Archivos de registro (log) del autor.
+
+6. CVS también puede mantener distintas "ramas" *(revisiones paralelas de un modulo para efectuar cambios sin tocar la evolucion principal. Se suele emplear para pruebas o para mantener cambios en versiones viejas)* de un proyecto. Por ejemplo, una versión difundida de un proyecto de programa puede formar una rama y ser utilizada para corregir errores. Todo esto se puede llevar a cabo mientras la versión que se encuentra actualmente en desarrollo y posee cambios mayores con nuevas características se encuentre en otra línea formando otra rama separada.
+
+7. Cada archivo tiene un numero de revision independiente, este numero registra el numero de cambios hechos al archivo y no tiene ninguna relacion con algun numero de version del proyecto completo. 
+
+8. En los casos en que varios desarrolladores o equipos requieran una versión de los archivos y, debido a la geografía o la política no puedan adquirirlo; pueden importar una versión de otro equipo **(incluso si no utilizan CVS)**, y luego CVS puede combinar los cambios de la rama de proveedor con los últimos archivos si eso es lo que se desea.
+
+9. Proporciona una base de datos de módulos flexibles que ofrece una correspondencia simbólica de los nombres a los componentes de una distribución de software más grande, (esto se aplica a las colecciones nombres de directorios y archivos, ***UN SOLO COMANDO PUEDE MANIPULAR TODA LA COLECCION.***)
+
+10. Los clientes pueden
+	* Comparar diferentes versiones de archivos.
+	* Solicitar una historia completa de los cambios.
+	* Sacar una "foto" histórica del proyecto tal como se encontraba en una fecha determinada o en un número de revisión determinado. 
+	* Utilizar la orden de actualización con el fin de tener sus copias al día con la última versión que se encuentra en el servidor (esto elimina la necesidad de repetir las descargas del proyecto completo).
+	* Funcionar en cualquiera de los sistemas operativos más difundidos.
+	* Sacar copias YOU del proyecto al mismo tiempo.
+	* Sacar y comparar versiones sin necesidad de teclear una contraseña en proyectos de código abierto *("acceso de lectura anónimo")*.Solamente el ingreso de cambios requiere una contraseña en estos casos.
+
+
+# Limitaciones de CVS
+1. Los archivos en el repositorio sobre la plataforma CVS no pueden ser renombrados, estos deben ser agregados con otro nombre y luego eliminados.
+
+2. El protocolo CVS no provee una manera de que los directorios puedan ser eliminados o renombrados, cada archivo en cada subdirectorio debe ser eliminado y re-agregado con el nuevo nombre. 
+
+3. Soporte limitado para archivos Unicode con nombres de archivo no ASCII.
+
+4. Actividades como la planificacion, los releases, etc, quedan fuera de su ambito de trabajo y deben ser abordadas por las personas y otras herramietnas complementarias
 
 ***
 
@@ -412,6 +450,81 @@ CVS puede mantener un archivo histórico que rastrea cada uso de checkout, commi
 Loggin debería estar habilitado para la creación del archivo ‘$CVSROOT/CVSROOT/history’.
 
 history usa ‘-f’, ‘-l’, ‘-n’, and ‘-p’ de manera que entra en conflicto con el uso normal dentro de CVS.
+
+####import - importación de fuentes en CVS usando ramas de desarrollo.   	
+
+	import [-opciones] ETIQUETALIBERACIÓN etiquetadesarrollo repositorio ...  
+
+*Requerimientos*: directorio de distribución de repositorio, fuente.   
+*Cambios*: repositorio.
+
+Use **import** para incorporar una fuente de distribución de la totalidad de una fuente externa (por ejemplo, un proveedor de origen) en el directorio de repositorio de código fuente. Puede utilizar este comando, tanto para la creación inicial de un repositorio, y actualizaciones al por mayor en el módulo de la fuente externa.
+
+El argumento repositorio da un nombre de directorio (o una ruta de acceso a un directorio) bajo el  directorio CVS raíz de repositorios; si no existiera el directorio, import lo crea.
+
+Cuando usas import para actualizaciónes de código que han sido modificadas en su repositorio de fuentes(desde una importación antes), será norificado por algún conflicto de archivos en las dos ramas de desarrollo; usa 'checkout -j' para reconciliar las diferencias, tal como import instruye hacerlo. 
+
+Si CVS decide que un archivo deberia ser ignorado, no lo importa e imprime una 'I 'seguido de el nombrede archivo
+
+Si el archivo "$ CVSROOT / CVSROOT / cvswrappers 'existe, cualquier archivo cuyo nombre coincida con las especificaciones de ese archivo será tratado como paquetes y el filtrado adecuado se realizará en el directorio / archivo antes de ser importado. Ver el archivo cvswrappers.
+
+La fuente externa se guarda en una rama de primer nivel, por defecto 1.1.1. Las actualizaciones son hojas de esta rama; por ejemplo, los archivos de la primera colección importada de la fuente será la revisión 1.1.1.1, a continuación, los archivos de la primera actualización importados serán la revisión 1.1.1.2, y así sucesivamente.
+
+Se requieren al menos tres argumentos. Repositorio es necesario para identificar la colección de fuente. Vendortag es una etiqueta para toda la rama (por ejemplo, por 1.1.1). También debe especificar al menos una RELEASETAG para identificar los archivos en las hojas creadas cada vez que ejecute **import**. El RELEASETAG debe ser nuevo, no existentes previamente en el archivo de depósito, e identificar de forma única el import release.
+
+Note que **import** no cambia el directorio en el que se invoca.En particular, no se estableció ese directorio como  directorio de trabajo CVS; si quieres trabajar con las fuentes importarlas primero y luego compruebalo en un directorio diferente.
+
+#### log - Imprime información de registro para los archivos
+
+	log [options] [files…]   
+*Requerimientos*: repositorio, directorio de trabajo.   
+*Cambios*: ninguno.  
+*Sinónimo*: parche.    
+
+Muestra la información de registro para los archivos. Log utiliza para llamar a la RCS la utilidad rlog. Aunque esto ya no es así en las fuentes actuales, esta historia determina el formato de la salida y las opciones, que no están muy al estilo de los demás comandos CVS.
+La salida incluye la ubicación de el archivo RCS, la revisión pincipal (la última revisión en el tronco), todos los nombres simbólicos (etiquetas) y algunas otras cosas. Para cada revisión, el número de revisión, el autor, el número de líneas añadidas / eliminadas y el mensaje de registro se imprimen. Todas las horas se muestran en hora universal coordinada (UTC). (Otras partes de CVS tiempos de impresión en la zona horaria local).
+
+#### rdiff - formatos 'patch' diff entre versiones.
+
+	rdiff [-flags] [-V vn] [-r t|-D d [-r t2|-D d2]] modules…    
+*Requerimientos*: repositorio.          
+*Cambios*: ninguno.     
+*Sinónimo*: parche.  
+    
+Construye un parche formato Larry Wall (1) Archivo entre dos lanzamientos, que se pueden alimentar directamente en el parche de programa para llevar una vieja versión puesta al día con la nueva versión. (Esta es una de las pocos comandos CVS que operan directamente desde el repositorio, y no requiere una comprobación previa.) La salida diff se envía al dispositivo de salida estándar.
+Puede especificar (usando el estándar '-r' y '-D' opciones) cualquier combinación de uno o dos revisiones o fechas. Si se especifica una sola revisión o la fecha, el archivo de revisión refleja las diferencias entre esa revisión o la fecha y las revisiones de cabecera actuales en el archivo RCS.
+Tenga en cuenta que si la versión de software afectado está contenido en más de un directorio, entonces puede ser necesario especificar la opción '-p' para el comando patch cuando se parchean las fuentes antiguas, de modo que el parche es capaz de encontrar los archivos que se encuentran en otros directorios.
+
+
+#### release - indica que un módulo ya no está en uso.
+	release [-d] directories…   
+*Requerimientos*: Directorio de trabajo.    
+*Cambios*: Directorio de trabajo, registro de la historia.     
+
+Este comando está destinado a cancelar de forma segura el efecto de 'cvs checkout'. Desde CVS no bloquea los archivos, no es estrictamente necesario el uso de este comando. Usted siempre puede simplemente borrar su directorio de trabajo, si se quiere; pero corre el riesgo de perder los cambios que pueda haber olvidado, y no deja ningún rastro en el archivo histórico CVS si es que usted ha abandonado su checkout.
+
+Use ‘cvs release'para evitar estos problemas. Este comando comprueba que no haya cambios no confirmados presentes; que se está ejecutando desde inmediatamente por encima de un directorio CVS de trabajo; y que el repositorio de grabado para sus archivos es el mismo que el definido en el repositorio de la base de datos del módulo.
+Si todas estas condiciones se cumplen, 'cvs release' deja constancia de su ejecución (que acredite que intencionalmente quiere abandonar su checkout)  registro en el CVS del histórico.
+
+#### remove -  elimina archivos de uso activo. 
+ 
+	remove [-flR] [files...]  
+*Requerimientos*: repositorio, directorio de trabajo.   
+*Cambios*: directorio de trabajo.
+
+El comando remove se utiliza para eliminar archivos no deseados de su uso activo. El usuario elimina normalmente los archivos desde el directorio de trabajo antes de la invocación del comando remove. Sólo el directorio de trabajo se actualiza. Los cambios en el repositorio no se realizan hasta que el comando commit es ejecutado.
+
+El comando remove no elimina archivos desde el repositorio. CVS mantiene todos los datos históricos en el repositorio de manera que es posible reconstruir los estados anteriores de los proyectos bajo control de revisión.   
+Para deshacer el comadno remove CVS  ó para resucitar los archivos que se han eliminado previamente, consulte la Sección complemento Agregar archivos y directorios en el repositorio.    
+
+#### update - trae el árbol de trabajo en sincronización con  el repositorio.
+
+	update [-ACdflPpR] [-I name] [-j rev [-j rev]] [-k kflag] [-r tag|-D date] [-W spec] files…
+
+*Requerimientos*: repositorio, directorio de trabajo.    
+*Cambios*: directorio de trabajo.
+
+Después de ejecutar un checkout para crear su copia privada de la fuente desde el repositorio común, otros desarrolladores continuarán cambiando la fuente central. De vez en cuando, cuando sea conveniente en su proceso de desarrollo, puede utilizar el comando **update** desde dentro de su directorio de trabajo para conciliar su trabajo con las revisiones aplicadas al repositorio de código fuente desde el último checkout ó update.
 
 
 ***
