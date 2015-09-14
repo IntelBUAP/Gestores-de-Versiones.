@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+ntroducción##
+Bazaar es una herramienta que sirve como sistema de control de versiones de forma distribuida de origen open source, que permite ayudar al seguimiento del historial de un proyecto sobre tiempo y colaborar fácilmente con otros.
+
+Bazaar se caracteriza por ser adaptable y orientado a la mayoría de los trabajos de desarrollo de software tanto local como remoto, también se caracteriza por ser amigable para los que recién empiezan, y al mismo tiempo lo suficientemente potente para los expertos, no comprometiendo así la curva de aprendizaje. Bazaar es ligero en el sentido que no precisa tener un servidor dedicado también permite estar presente en una serie de aplicaciones y servicios libres y/o comerciales.
+
+Al margen de las características de Bazaar que posee por si mismo, cuenta con el patrocinio de Canonical tanto para su desarrollo como su soporte, disponible bajo licencia GPL.
+=======
 ###<center>SISTEMA CONTROL DE VERSIONES BAZAAR</center>
 - ####BAZ: Un Gestor de Versiones Anterior a BAZAAR
 El nombre de BAZAAR fue utilizado origin almente por una bifurcación cliente de 
@@ -7,7 +15,6 @@ de Canonical Robert Collins y se mantuvo hasta 2005, cuando el proyecto
 entonces llamado BAZAAR-NG (software actual) fue anunciado como el sucesor de BAZ.
 BAZ está ahora sin mantenimiento y canonical lo declaró obsoleto. La última
 versión de BAZ fue la 1.4.3, lanzado en Octubre del 2005. Baz se abandonó en 2006.
-
 
 - ####BAZAAR
 En febrero del 2005, Martin Pool, un desarrollador que había descrito y revisado
@@ -34,3 +41,5 @@ con eficacia y si Emacs bdeberia transladarse a otro sistema control de versione
 En Enero del 2014 por múltiples razones una de ellas es la impresión de que el bazar
 estaba casi muerto: "Hay tal vez 2-3 compromete a tronco cada mes. El tiempo para
 corregir errores en bazar también parece ser bastante largo, por lo general".
+>>>>>>> ead50af4b16675d1339b34cfd7536115c9d4019Vua
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh5
