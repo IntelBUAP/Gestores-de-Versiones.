@@ -1,26 +1,48 @@
 #Introducción a Mercurial
 
-
 Mercurial es un sistema de control de versiones multiplataforma, para desarrolladores de software. Está implementado principalmente haciendo uso del lenguaje de programación Python, pero incluye una implementación binaria de diff escrita en C. Mercurial fue escrito originalmente para funcionar sobre GNU/Linux. Ha sido adaptado para Windows, Mac OS X y la mayoría de otros sistemas tipo Unix. Mercurial es, sobre todo, un programa para la línea de comandos. Todas las operaciones de Mercurial se invocan como opciones dadas a su programa motor, hg (cuyo nombre hace referencia al símbolo químico del mercurio).
-
 
 Las principales metas de desarrollo de Mercurial incluyen un gran rendimiento y escalabilidad; desarrollo completamente distribuido, sin necesidad de un servidor; gestión robusta de archivos tanto de texto como binarios; y capacidades avanzadas de ramificación e integración, todo ello manteniendo sencillez conceptual1 Incluye una interfaz web integrada.
 
+##Historia
 El creador y desarrollador principal de Mercurial es Matt Mackall. El código fuente se encuentra disponible bajo los términos de la licencia GNU GPL versión 2, lo que clasifica a Mercurial como software libre.
 
-##Para Linux, MacOS X, y otras variantes de Unix
-
-
-
-#Historia
-Mackall hizo pública la existencia de Mercurial el 19 de abril de 2005.3 El estímulo que llevó a esto fue el anuncio de Bitmover, publicado anteriormente aquel mismo mes, informando que retirarían la versión gratuita de BitKeeper.
+Mackall hizo pública la existencia de Mercurial el 19 de abril de 2005. El estímulo que llevó a esto fue el anuncio de Bitmover, publicado anteriormente aquel mismo mes, informando que retirarían la versión gratuita de BitKeeper.
 
 Se había estado usando BitKeeper debido a los requisitos de control de versiones del proyecto del núcleo Linux. Mackall decidió escribir un sistema de control distribuido de versiones como sustituto para usarlo con el núcleo Linux. Este proyecto comenzó aproximadamente al mismo tiempo que otro denominado git, iniciado por el propio Linus Torvalds con objetivos similares.
 
 El proyecto Linux decidió usar Git en lugar de Mercurial. Sin embargo, muchos otros proyectos usan este último.
 
+##Características
 
-#Comandos
+  - **Arquitectura distribuida**
+
+Los sistemas gestores de versiones tradicionales (como Subversion) tienen generalmente una arquitectura cliente-servidor, donde un servidor central almacena las revisiones de un proyecto. En contraste, Mercurial es verdaderamente distribuido, permitiéndole a cada desarrollador una copia local del historial de desarrollo completo. De esta forma es posible trabajar independientemente de un servidor central o del acceso a la red. El envío de cambios (committing), ramificaciones (branching) y fusión (merging) de archivos son rápidas y poco costosas.
+
+  - **Rápido**
+
+Las implementaciones y estructuras de datos de Mercurial están diseñadas para ser rápidas. 
+Es posible comprobar cambios (diffs) entre revisiones, o regresar a versiones anteriores en segundos. Por ello Mercurial es ideal para grandes proyectos.
+
+  - **Independiencia de la platforma**
+
+Mercurial fue escrito con pensando en la independencia de las plataformas. Por ello, la mayor parte de Mercurial está escrita en Phyton, con una pequeña porción en C por rasones de rendimiento. Como resultado, están disponibles versiones binarias para todas las plataformas mayores.
+
+  - **Extensible**
+
+La funcionalidad de Mercurial se puede incrementar mediante extensiones, ya sea activando las oficiales que se distribuyen junto con Mercurial o descargando algunas de la red o creando las propias. Las esxtensiones están escritas en Phyton y pueden cambiar el funcionamiento de los comandos básicos, agregar nuevos comandos, etc.
+
+  - **Fácil de Usar**
+
+Mercurial presenta un set de comandos con el que la mayoría de los usuarios de sistemas de control de versiones como Subversion se pueden sentir bastante familiarizados. Acciones potencialmente peligrosas se encuentran disponibles al activar extensiones, por lo que la interfaz básica es fácil de usar, fácil de aprender y dificil de quebrantar.
+
+  - **Open Source**
+
+Mercurial es software gratuito licenciado bajo los términos de la GNU General Public License Version 2 o cualquier version más reciente.
+
+##Tutorial para instalar clientes Linux, MacOS X, y otras variantes de Unix
+
+##Comandos
 El programa ejecutable de Mercurial se llama hg. Cada comando de Mercurial comienza por hg, seguido de un nombre de comando, seguido de posibles opciones y argumentos oportunos.
 
 En principio se puede teclear hg en la línea de comandos, y el programa debería mostrar un resumen de la ayuda de los comandos.
@@ -35,18 +57,14 @@ Para saber que versión de Mercurial se está ejecutando, teclear:
  There is NO warranty; not even for MERCHANTABILITY
  or FITNESS FOR A PARTICULAR PURPOSE
 ```
-##Clonar
+###Clonar
 La forma más fácil de comenzar con Mercurial es usar un repositorio que ya contiene algunos ficheros y alguna historia previa.
 
 Para hacer esto, se utiliza el comando clone. Esto hace un clon de un repositorio; se hace una copia completa de otro repositorio de manera que tenemos nuestra propia copia local y privada para trabajar con ella.
 
-
 ```
-
  $ hg clone http://www.selenic.com/repo/hello hola-mio
-
 ```
-
 Si todo fue bien, el comando clone no muestra ninguna salida. Ahora debemos encontrar un subdirectorio llamado hola-mio en nuestro directorio actual:
 
 ```
@@ -60,7 +78,7 @@ Dentro del directorio hola-mio, encontraremos algunos ficheros:
 ```
 Estos ficheros son copias exactas de los ficheros en el repositorio que acabamos de clonar.
 
-##Primeros Cambios
+###Primeros Cambios
 Nos encontramos dentro de nuestro repositorio hola-mio, el cual clonamos en SpanishTutorialClone.
 
 El aislar cada línea de desarrollo distinta en un repositorio separado es una buena práctica habitual en Mercurial. Esto previene que se mezcle código no relacionado entre si, y hace más fácil testear partes del proyecto una a una. Comenzaremos siguiendo este modelo.
@@ -83,7 +101,6 @@ Ahora es el momento de hacer un cambio en el nuevo repositorio. Vayamos al direc
 ```
 El contenido de hello.c se parece a lo siguiente:
 ```
-
  /*
   * hello.c
   *
@@ -161,3 +178,125 @@ Después cerramos el editor y (como debe ser de esperar) el comando de commit no
 Como se discutió en SpanishTutorialClone, el nuevo ChangeSet únicamente existe en este repositorio. Esto es un elemento crítico del modo en que funciona Mercurial.
 
 Para compartir los cambios realizados, debemos continuar en SpanishTutorialShareChange.
+
+**Preparación de Mercurial**
+
+Como primer paso, debemos decirle a Mercurial nuestro nombre. Para ello abre con un editor de texto el archivo ```~/.hgrc``` (o ```mercurial.ini``` en tu directorio principal en Windows) y agregar la sección ui (*user interaction*) con tu nombre de usuario:
+
+```
+[ui]
+username = Mr. Johnson <johnson@smith.com>
+```
+
+**Inicializa el proyecto**
+
+<!--- --->
+Agrega un nuevo folder en el que deseas trabajar:
+```
+$ hg init project
+```
+**Poner archivos en seguimiento**
+
+Inntroducir el folder del proyecto, crear algunos archivos, agregarlos todos y confirmarlos.
+```
+$ cd project
+$ echo 'print("Hello")' > hello.py
+$ hg add
+$ hg commit
+``` 
+(tu editor predeterminado abre, agrega el mensaje de confirmación, guarda y cierra el archivo correspondiente.)
+
+Además puedes agregar archivos específicos en lugar de todos los archivos en el directorio. Mercurial pondrá en seguimiento solo éstos archivos e ignorará los otros. El siguiente ejemplo le indica a Mercurial que agregue todos los archivos con los nombres que empiecen con "file0" así como los archivos file10, file11 and file12.
+```
+$ hg add file0* file10 file11 file12
+```
+**Guardar los cambios**
+
+Después de modificar archivos en seguimiento, verifica qué archivos fueron modificados, cuales fueron agregados o removidos, y cuales aún no se encuentran en seguimiento:
+```
+$ hg status
+```
+
+Para ver los cambios exactos:
+```
+$ hg diff
+```
+
+Confirmar los cambios:
+
+```
+$ hg commit
+```
+**Copiar y mover archivos**
+
+Cuando copias o mueves archivos, debes decirle a Mercurial que copie o mueva el archivo por ti, de forma que pueda hacer el seguimiento de las relaciones entre archivos.
+
+Recuerda confirmar después de mover o copiar.
+```
+$ hg cp hello.py copy
+$ hg mv hello.py target
+$ hg diff # see the changes
+$ hg commit
+```
+
+**Checar tu historial**
+
+Puedes checar tu historial con el comando:
+```
+$ hg log
+```
+Esto imprime una lista de cambios junto con su fecha, el usuario que los confirmó y el mensaje de confirmación.
+
+**Verificar una revision anterior**
+
+En algún momento del desarrollo de un proyecto, podrías querer regresar en el historial para hacer cambios directamente, por ejemplo, porque un cambio anterior introdujo un *bug* y quieres repararlo cuando ocurrió.
+
+To look at a previous version of your code, you can use update. Let's assume that you want to see revision 1.
+```
+$ hg update 1
+```
+Now your code is back at revision 1, the second commit (Mercurial starts counting at 0). To check if you're really at that revision, you can use identify -n.
+```
+$ hg identify -n
+```
+To update to the most recent revision, you can use "tip" as revision name.
+```
+$ hg update tip
+```
+**Corregir errores en versiones anteriores**
+
+When you find a bug in some earlier revision you have two options: either you can fix it in the current code, or you can go back in history and fix the code exactly where you did it, which creates a cleaner history.
+
+To do it the cleaner way, you first update to the old revision, fix the bug and commit it. Afterwards you merge this revision and commit the merge. Don't worry, though: Merging in mercurial is fast and painless, as you'll see in an instant.
+
+Let's assume the bug was introduced in revision 1.
+```
+$ hg update 1
+$ echo 'print("Hello Mercurial")' > hello.py
+$ hg commit
+```
+Now the fix is already stored in history. We just need to merge it with the current version of your code.
+```
+$ hg merge
+```
+If there are conflicts use hg resolve - that's also what merge tells you to do in case of conflicts.
+
+First list the files with conflicts
+```
+$ hg resolve --list
+```
+Then resolve them one by one. resolve attempts the merge again
+```
+$ hg resolve conflicting_file
+```
+(fix it by hand, if necessary)
+
+Mark the fixed file as resolved
+```
+$ hg resolve --mark conflicting_file
+```
+Commit the merge, as soon as you resolved all conflicts. This step is also necessary when there were no conflicts!
+```
+$ hg commit
+```
+At this point, your fix is merged with all your other work, and you can just go on coding. Additionally the history shows clearly where you fixed the bug, so you'll always be able to check where the bug was.
