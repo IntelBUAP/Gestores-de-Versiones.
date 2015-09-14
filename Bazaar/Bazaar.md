@@ -1,3 +1,5 @@
+<img src="Imagenes/bazaar.png" height="200" width="200"/>
+
 ##Introducción##
 Bazaar es una herramienta que sirve como sistema de control de versiones de forma distribuida de origen open source, que permite ayudar al seguimiento del historial de un proyecto sobre tiempo y colaborar fácilmente con otros.
 
