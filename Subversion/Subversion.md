@@ -17,6 +17,13 @@ a gente usando ordenadores para manejar información que cambia a menudo, hay u
 
 Y aquí es donde entra en juego Subversion.
 
+Subversion es un sistema centralizado de control de versiones. En otras palabras, es un sistema que permite llevar el control de los cambios realizados por una o más personas a una serie de documentos a través del tiempo.
+
+En un proyecto podemos tener muchos documentos de diversos tipos, como *HTML* o código de *Phyton*. Los documentos pueden estar cambiando constantemente y ser modificados por diversas personas. En el ciclo de trabajo diario, esta situación puede ocasionar cambios perdidos y severos problemas de coordinación, lo que degenera en tiempo perdido y baja de productividad para todos los miembros del equipo de desarrollo.
+
+Un sistema de control de versiones se encarga de llevar el control de todas estas modificaciones a los documentos del proyecto. Un desarrollador solamente tiene que encargarse de guardar sus cambios al proyecto y el sistema se ocupa de integrarlos con los cambios de los otros miembros del equipo y de asegurarse de que no existan conflictos.
+
+Adicionalmente, utilizar un sistema de control de versiones nos permite cosas como comparar la más reciente versión de un documento con versiones anteriores, identificar quien ha realizado cuales cambios en el código y designar un conjunto de documentos específicos como una 'entrega' del proyecto que queda identificada con las versiones de cada uno de los documentos en el instante de la definición.
 
 ##Historia
 
@@ -93,3 +100,4 @@ Subversión no tiene un equipaje histórico; está implementado como una colecci
 >### Andy Daniel Cruz Ramos
 >### Mónica Conde Domínguez
 >### Luisa Cerón Perea
+>### Juliana Yarid Castro Rodríguez
