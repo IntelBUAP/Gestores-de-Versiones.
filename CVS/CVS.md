@@ -109,6 +109,19 @@ software libre del mundo
 
 ***
 
+#Como instalar CVS *(Links a tutoriales online)*
+
+###Windows
+[Como instalar CVS en Windows](http://nideaderedes.urlansoft.com/2006/04/23/cvs-en-windows-en-menos-de-10-minutos/)
+
+### Linux
+[Como instalar CVS en Linux](https://ubuntulife.wordpress.com/2007/05/28/instalar-un-servidor-de-cvs-en-ubuntu/)
+
+### MacOS
+[Como instalar CVS en Mac OS X](http://macprogramadores.org/?q=xcodecvs)
+
+***
+
 ##Descripción de los comandos de _CVS_
 
 El formato general de todos los comandos de _CVS_ es:
@@ -404,3 +417,5 @@ history usa ‘-f’, ‘-l’, ‘-n’, and ‘-p’ de manera que entra en co
 ***
 
 `aoapedro@hotmail.com`
+
+`zourer@gmail.com`
