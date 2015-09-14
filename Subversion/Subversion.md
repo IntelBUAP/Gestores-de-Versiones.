@@ -38,9 +38,7 @@ fallos y defectos.
 En febrero de 2000 Karl Fogel y Jim Blandy aceptaron trabajar en el proyecto, 
 decidiendo llamarlo **Subversion**
 <<<<<<< HEAD
-> ### Andy Daniel Cruz Ramos
 
->###Edilzar Cisneros Ancheyta
 **Comandos y su descripción.**
 
 A continución alistaremos los comandos básicos para el uso de Subversion, así como su descripción y su sintaxis.
@@ -146,4 +144,5 @@ Subversión no tiene un equipaje histórico; está implementado como una colecci
 >### Andy Daniel Cruz Ramos
 >### Mónica Conde Domínguez
 >### Luisa Cerón Perea
+>###Edilzar Cisneros Ancheyta
 >>>>>>> cb40864ba0767c80a067b4fa1c58050603b61124
