@@ -43,12 +43,17 @@ Conociendo más características de la misma, hará de nuestro ejercicio y desar
 
 ```
 ***
+#Como instalar CVS *(Links a tutoriales online)*
 
+###Windows
+[Como instalar CVS en Windows](http://nideaderedes.urlansoft.com/2006/04/23/cvs-en-windows-en-menos-de-10-minutos/)
 
+### Linux
+[Como instalar CVS en Linux](https://ubuntulife.wordpress.com/2007/05/28/instalar-un-servidor-de-cvs-en-ubuntu/)
 
+### MacOS
+[Como instalar CVS en Mac OS X](http://macprogramadores.org/?q=xcodecvs)
 
-
-`aoapedro@hotmail.com`
 
 ***
 
@@ -152,19 +157,6 @@ software libre del mundo
 3. Soporte limitado para archivos Unicode con nombres de archivo no ASCII.
 
 4. Actividades como la planificacion, los releases, etc, quedan fuera de su ambito de trabajo y deben ser abordadas por las personas y otras herramietnas complementarias
-
-***
-
-#Como instalar CVS *(Links a tutoriales online)*
-
-###Windows
-[Como instalar CVS en Windows](http://nideaderedes.urlansoft.com/2006/04/23/cvs-en-windows-en-menos-de-10-minutos/)
-
-### Linux
-[Como instalar CVS en Linux](https://ubuntulife.wordpress.com/2007/05/28/instalar-un-servidor-de-cvs-en-ubuntu/)
-
-### MacOS
-[Como instalar CVS en Mac OS X](http://macprogramadores.org/?q=xcodecvs)
 
 ***
 
