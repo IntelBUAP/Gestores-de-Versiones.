@@ -77,6 +77,12 @@ DCVS puede decidir si es o no responsable para cierto **branch** o **delta** o u
 dado. si es así, todas las operaciones de modificacion son permitidas; sino las operaciones  
 de modificación son posibles unicamente sobre el servidor remoto apropiado.
 
+Otro problema que se presenta cuando se trabaja con repositorios DCVS distribuidos son los  
+nombres de las configuraciones \(tags\). Estos deben ser únicamente asignables exactamente  
+a un servidor DCVS. DCVS resuelve este problema de una forma muy simple, expandiendo los  
+tags con un prefijo especifico del servidor como: **_at_**dcvs**_mydomain_**org, así no  
+ocurren conflictos en el espacio de nombre del tag.
+
 ##Comandos
 ----------
 
