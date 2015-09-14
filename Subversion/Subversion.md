@@ -6,7 +6,6 @@ Introducción
 ------------
 
 El control de versiones es el arte del manejo de los cambios en la información.
-
 Ha sido durante mucho tiempo una herramienta crítica para los programadores, 
 quienes normalmente empleaban su tiempo haciendo pequeños cambios en el software
 y después des- haciendo esos cambios al día siguiente. 
@@ -44,13 +43,6 @@ fallos y defectos.
 
 En febrero de 2000 Karl Fogel y Jim Blandy aceptaron trabajar en el proyecto, 
 decidiendo llamarlo **Subversion**
-<<<<<<< HEAD
-
-$ svn propedit svn:ignore
-=======
-> ### Mónica Conde Domínguez
->>>>>>> b17d612fd293fa13e011cde543f5f4f8bb97d1b7
-=======
 
 ## Características ##
 
@@ -154,9 +146,6 @@ $ svn propedit svn:ignore
 >### Andy Daniel Cruz Ramos
 >### Mónica Conde Domínguez
 >### Luisa Cerón Perea
-<<<<<<< HEAD
->###Edilzar Cisneros Ancheyta
->>>>>>> cb40864ba0767c80a067b4fa1c58050603b61124
-=======
+>### Edilzar Cisneros Ancheyta
 >### Juliana Yarid Castro Rodríguez
->>>>>>> db041c72755697c396a214872ffbcd19776c05a7
+
