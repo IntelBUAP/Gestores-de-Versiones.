@@ -17,9 +17,29 @@ a gente usando ordenadores para manejar información que cambia a menudo, hay u
 
 Y aquí es donde entra en juego Subversion.
 
+
+##Historia
+
+A principios de 2000, *CollabNet, Inc*. (http://www.collab.net) comenzó a 
+buscar a los desarrolladores para escribir un sustituto para **CVS**.
+
+CollabNet ofrece una suite de software de colaboración denominado CollabNet 
+Enterprise Edition (CEE), de los cuales uno de los componentes era el control 
+de versiones. Aunque CEE utiliza CVS como su sistema de control de versiones 
+inicial, las limitaciones de CVS eran evidentes desde el principio, y CollabNet
+ sabía que tendría que encontrar algo mejor. 
+
+Desafortunadamente, CVS se había convertido en el estándar de facto en el mundo
+ del código abierto en gran medida porque no había nada mejor, al menos no bajo
+ una licencia libre. Así CollabNet decidió escribir un nuevo sistema de control
+ de versiones desde cero, manteniendo las ideas básicas de CVS, pero sin sus 
+fallos y defectos.
+
+En febrero de 2000 Karl Fogel y Jim Blandy aceptaron trabajar en el proyecto, 
+decidiendo llamarlo **Subversion**
 > ### Andy Daniel Cruz Ramos
 
-
+>###Edilzar Cisneros Ancheyta
 **Comandos y su descripción.**
 
 A continución alistaremos los comandos básicos para el uso de Subversion, así como su descripción y su sintaxis.
@@ -65,3 +85,6 @@ $ svn copy nombre del repo/trunk -r #revisión nombre del repo/tags/nombre de la
 10. **Excluir archivos.**
 Si se desea excluir archivos generados manualmente y no se quieren subir al repositorio podemos agregarlos a la lista de exclusión con el siguiente comando:
 $ svn propedit svn:ignore
+=======
+> ### Mónica Conde Domínguez
+>>>>>>> b17d612fd293fa13e011cde543f5f4f8bb97d1b7
