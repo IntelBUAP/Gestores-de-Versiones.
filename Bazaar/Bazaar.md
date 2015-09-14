@@ -9,6 +9,10 @@ BAZ está ahora sin mantenimiento y canonical lo declaró obsoleto. La última
 versión de BAZ fue la 1.4.3, lanzado en Octubre del 2005. Baz se abandonó en 2006.
 
 
+##CAMBIO
+
+
+
 - ####BAZAAR
 En febrero del 2005, Martin Pool, un desarrollador que había descrito y revisado
 una serie de sistemas de control de revisiones en las conversaciones y en su 
