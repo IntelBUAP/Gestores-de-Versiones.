@@ -1,21 +1,19 @@
 
-#### Gestor de Versiones: CVS (Concurrent Version System).
+# CVS (Concurrent Version System).
 
 
-##### *** - Introducción.***
+## Introducción.
 
-***
-```
-- En este marco teórico, se describe el concepto de Gestor de Versión CVS. Dado el problema entre los desarrolladores del intercambio de ficheros de código fuente, surge la necesidad de evitar este tipo de conflicto mediante la herramienta mencionada, esto, descrito en la investigación recabada en este documento.
+
+En este marco teórico, se describe el concepto de Gestor de Versión CVS. Dado el problema entre los desarrolladores del intercambio de ficheros de código fuente, surge la necesidad de evitar este tipo de conflicto mediante la herramienta mencionada, esto, descrito en la investigación recabada en este documento.
 
 Así mismo, se hace mención de su historia, principales características, uso y manejo del mismo con su respectiva descripción.
 
 Los gestores de versiones, también llamados Herramientas de Gestión de Configuraciones de Software ó Repositorios, son herramientas que permiten a desarrolladores de Proyectos centralizar y coordinar sus trabajos. Manteniendo los registros y cambios de distintos ficheros de un Proyecto; principalmente cógido fuente. Permitiendo la colaboración de distintos desarrolladores e incluyendo la evolución en líneas paralelas de un mismo Proyecto.
 
 Conociendo más características de la misma, hará de nuestro ejercicio y desarrollo una interacción concurrente e independiente.
-```
-***
-##### - Ventajas.
+
+### Ventajas.
 ***
 ```
 	- Aplicación Cliente-Servidor.
@@ -29,7 +27,7 @@ Conociendo más características de la misma, hará de nuestro ejercicio y desar
 ```
 ***
 
-##### - Otros sistemas.
+### Otros sistemas.
 ***
 ```
 	- Microsoft Source Safe.
@@ -40,10 +38,10 @@ Conociendo más características de la misma, hará de nuestro ejercicio y desar
 	- Apache Subversion (SVN).
 	- Git.
 	- Mercurial.
-
 ```
 ***
-#Como instalar CVS *(Links a tutoriales online)*
+
+##Como instalar CVS *(Links a tutoriales online)*
 
 ###Windows
 [Como instalar CVS en Windows](http://nideaderedes.urlansoft.com/2006/04/23/cvs-en-windows-en-menos-de-10-minutos/)
@@ -57,63 +55,23 @@ Conociendo más características de la misma, hará de nuestro ejercicio y desar
 
 ***
 
-Historia de CVS
--------------------------------
-**CVS** comenzo a desarrollarse por
-[***Dick Grune***](http://www.dickgrune.com/ "Dick Grune")
-a mediados de los *80's* a partir de un sistema
-de control de versiones anterior llamado
-*"sistema de control de revisiones"* (RCS), que gestiona
-archivos individuales, pero no proyectos integrales.
+## Historia de CVS
+**CVS** comenzo a desarrollarse por [***Dick Grune***](http://www.dickgrune.com/ "Dick Grune") a mediados de los *80's* a partir de un sistema de control de versiones anterior llamado *"sistema de control de revisiones"* (RCS), que gestiona archivos individuales, pero no proyectos integrales.
 
 ![Dick Grune](http://www.dickgrune.com/pictures/dick.jpg "Dick Grune")
 
-Dick Grune creo lo que se conoce como la *"version antigua"*
-de CVS para poder cooperar con sus estudiantes
-(*Erik Baalbergen y Maarten Waage*)
-en el ACK (*Ámsterdam Compiler Kit* compilador de C).
-Ya que los tres tenian diferentes horarios
-y solo podian programar en sus ratos libres.
-Inicialmente lo llamaron
-**cmt** (*commit versions independently*),
-porque les permitió combinar versiones independientes de codigo
-en un mismo proyecto.
+Dick Grune creo lo que se conoce como la *"version antigua"* de CVS para poder cooperar con sus estudiantes (*Erik Baalbergen y Maarten Waage*) en el ACK (*Ámsterdam Compiler Kit* compilador de C). Ya que los tres tenian diferentes horarios y solo podian programar en sus ratos libres. Inicialmente lo llamaron **cmt** (*commit versions independently*), porque les permitió combinar versiones independientes de codigo en un mismo proyecto.
 
-Grune lanzó públicamente el código (*un conjunto de scripts*)
-en Usenet para mod.sources el **23 de junio 1986**.
-Y por fin un sistema de control de versiones permitió
-a los desarrolladores trabajar simultaneamente
-de forma mas o menos independiente,
-pasando cada uno a trabajar sobre una copia del proyecto total
-que se iba sincronizando con el proyecto general.
+Grune lanzó públicamente el código (*un conjunto de scripts*) en Usenet para mod.sources el **23 de junio 1986**. Y por fin un sistema de control de versiones permitió a los desarrolladores trabajar simultaneamente de forma mas o menos independiente, pasando cada uno a trabajar sobre una copia del proyecto total que se iba sincronizando con el proyecto general.
 
-Unos años mas tarde, en **1989**,
-***Brian Berliner***
-tomo los scripts de Grune  y los reescribió en C,
-creando lo que sería la *"versión moderna"* de CVS,
-ya con una clara arquitectura cliente-servidor,
-tiempo despues se le unieron ***Jeff Polk***
-y muchos otros colaboradores,
-lo liberaron para beneficio de la comunidad bajo la **GPL**.
+Unos años mas tarde, en **1989**, ***Brian Berliner*** tomo los scripts de Grune  y los reescribió en C, creando lo que sería la *"versión moderna"* de CVS, ya con una clara arquitectura cliente-servidor, tiempo despues se le unieron ***Jeff Polk*** y muchos otros colaboradores, lo liberaron para beneficio de la comunidad bajo la **GPL**.
 
-El **19 de noviembre de 1990**, CVS versión **1.0**
-fue presentado a la
-**Free Software Foundation**
-para su desarrollo y distribución.
-Así pasó a ser el sistema de control de versiones más usado del mundo.
+El **19 de noviembre de 1990**, CVS versión **1.0** fue presentado a la **Free Software Foundation** para su desarrollo y distribución. Así pasó a ser el sistema de control de versiones más usado del mundo.
 
-Desde entonces se han sucedido diversos cambios
-realizados por varias empresas,
-especialmente **Cygnus Support** y **Cyclic Software**.
-En la actualidad, casi todos los cambios recientes en **CVS**
-son obra de Cyclic. Y tras eliminar alguna dependencias
-CVS paso a ser parte oficial del proyecto **GNU**,
-además es usado por la mayoría de los grandes proyectos de
-software libre del mundo
-(*gcc, emacs, guile, gtk, gimp, gnome, linux, etc.*).
+Desde entonces se han sucedido diversos cambios realizados por varias empresas, especialmente **Cygnus Support** y **Cyclic Software**. En la actualidad, casi todos los cambios recientes en **CVS** son obra de Cyclic. Y tras eliminar alguna dependencias CVS paso a ser parte oficial del proyecto **GNU**, además es usado por la mayoría de los grandes proyectos de software libre del mundo (*gcc, emacs, guile, gtk, gimp, gnome, linux, etc.*).
 
 ***
-#Características
+##Características
 
 1. Arquitectura cliente-servidor: 
 	* El servidor guarda la(s) versión(es) actual(es) del proyecto y su historial (una version consolidada del proyecto). 
@@ -149,7 +107,7 @@ software libre del mundo
 	* Sacar y comparar versiones sin necesidad de teclear una contraseña en proyectos de código abierto *("acceso de lectura anónimo")*.Solamente el ingreso de cambios requiere una contraseña en estos casos.
 
 
-# Limitaciones de CVS
+### Limitaciones de CVS
 1. Los archivos en el repositorio sobre la plataforma CVS no pueden ser renombrados, estos deben ser agregados con otro nombre y luego eliminados.
 
 2. El protocolo CVS no provee una manera de que los directorios puedan ser eliminados o renombrados, cada archivo en cada subdirectorio debe ser eliminado y re-agregado con el nuevo nombre. 
@@ -238,7 +196,7 @@ Muestra la version y la información del copyright para _CVS_.
 
 Crea nuevos archivos de trabajo de lectura y escritura. Anula la configuración de la variable de entorno _$ CVSREAD_.
 
-####Añadir archivos y directorios en el repositorio
+###Añadir archivos y directorios en el repositorio
 
 	add [-k rcs-kflag] [-m message] files...
 
@@ -255,13 +213,13 @@ Procesa palabras clave de acuerdo con _kflag_.
 
 Utiliza _message_ como el mensaje de registro, en lugar de invocar un editor.
 
-####_annotate_ - ¿Qué revisión modificó cada línea de un archivo?
+###_annotate_ - ¿Qué revisión modificó cada línea de un archivo?
 
 	annotate [options] files…
 
 Para cada archivo en _files_, imprime la revisión principal del tronco, junto con información sobre la última modificación para cada línea.
 
-#####Opciones del comando _annotate_
+####Opciones del comando _annotate_
 
 	-l
 
@@ -287,7 +245,7 @@ Comentar archivo como de la revisión / etiqueta específicada.
 
 Comentar archivo como de la fecha específicada.
 
-#####Ejemplo del comando _annotate_
+####Ejemplo del comando _annotate_
 
 	$ cvs annotate ssfile
 	Annotations for ssfile
@@ -297,7 +255,7 @@ Comentar archivo como de la fecha específicada.
 
 El archivo _'ssfile'_ contiene actualmente dos líneas. La línea _ssfile line 1_ se registró por mary el 27 de marzo. Luego, el 28 de marzo, joe añadió la línea _ssfile line 2_, sin modificar la línea _ssfile line 1_. Este informe no dice nada acerca de las líneas que han sido borradas o reemplazadas; es necesario utilizar _cvs diff_ para eso.
 
-####_checkout_ - Mirar las fuentes para la edición
+###_checkout_ - Mirar las fuentes para la edición
 
 	checkout [options] modules…
 
@@ -309,7 +267,7 @@ En función de los módulos especificados, _checkout_ puede crear directorios de
 
 Tenga en cuenta que _checkout_ se utiliza para crear directorios. El directorio de nivel superior creado siempre se añade al directorio donde se invoca _checkout_, y por lo general tiene el mismo nombre que el módulo especificado. En el caso de un alias del módulo, el sub-directorio creado puede tener un nombre diferente, pero usted puede estar seguro de que será un subdirectorio, y que _checkout_ mostrará la ruta relativa que lleva a cada archivo extraído dentro de su área privada de trabajo (a menos que especifique la opción global _"-Q"_).
 
-#####Opciones del comando _checkout_
+####Opciones del comando _checkout_
 
 	-D date
 
@@ -361,7 +319,7 @@ Copia el archivo de módulo, ordenado, a la salida estándar, en lugar de crear 
 
 Crea un directorio llamado _dir_ para los archivos de trabajo, en lugar de utilizar el nombre del módulo. En general, el uso de esta bandera es equivalente a usar _'mkdir dir; cd dir'_ seguido por el comando _checkout_ sin la etiqueta _' -d '_.
 
-#####Ejemplo del comando _checkout_
+####Ejemplo del comando _checkout_
 Obtiene una copia del módulo _'tc'_:
 
 	$ cvs checkout tc
@@ -371,7 +329,7 @@ Obtiene una copia del módulo _'tc'_ como se veía hace un día:
 	$ cvs checkout -D yesterday tc
 
 
-####_commit_ - Revise los archivos en el repositorio
+###_commit_ - Revise los archivos en el repositorio
 
 	commit [-lRf] [-m ’log_message’ | -F file] [-r revision] [files…]
 
@@ -383,7 +341,7 @@ _commit_ verifica que los archivos seleccionados están al día con las revision
 
 Cuando todo está bien, un editor se invoca para permitirle introducir un mensaje de registro que se escribirá a uno o más programas de registro y se coloca en el archivo RCS en el repositorio. Este mensaje de registro se puede recuperar con el comando log. Se puede especificar el mensaje de registro en la línea de comandos con la opción _'-m message'_, y así evitar la invocación editor, o utilizar la opción _"-F file'_ para especificar que el argumento del archivo contiene el mensaje de registro.
 
-#####Opciones del comando _commit_
+####Opciones del comando _commit_
 
 	-l
 
@@ -420,15 +378,14 @@ Utiliza _message_ como el mensaje de registro, en lugar de invocar un editor.
 
 ***
 
-#####diff—Muestra las diferencias entre revisiones#####
-
+####diff—Muestra las diferencias entre revisiones
 *Sintaxis*: diff [-lR] [-k kflag] [format_options] [[-r rev1 | -D date1] [-r rev2 | -D date2]] [files…]
 *Requerimientos*: directorio de trabajo, repositorio.
 *Cambios*: ninguno.
 
 El comando **diff** es usado para comparar diferentes revisiones de archivos. La acción predeterminada es comparar sus archivos de trabajo con las revisiones que se basaron en el, y reportar cualquier diferencia encontrada.
 
-#####export- Exporta fuentes desde CVS, similar al comando checkout.#####
+####export- Exporta fuentes desde CVS, similar al comando checkout.
 
 *sintaxis*: export [-flNnR] [-r rev|-D date] [-k subst] [-d dir] module…
 *requerimientos*: repositorio.
@@ -438,8 +395,7 @@ Este comando es una variante de checkout, es usado cuando quieres una copia de l
 
 A menudo se le gustaría usar '-kv' con cvs export. Esto hace que cualquier palabra clave que se amplie de tal manera que al importarla a algún otro sitio no se pierdan las palabas clave en la revisión de la información.Pero tenga en cuenta que no maneja una exportación que contiene los archivos binarios correctamente.También tenga en cuenta que después de haber usado '-kv', Ya no se puede usar el comando **ident**(que es parte de la suite RCS), que busca cadenas de palabras clave. Si usted quiere ser capaz de utilizar **ident** no debe usar '-kv'.
 
-#####history- Muestra el status de archivos y usuarios#####
-
+####history- Muestra el status de archivos y usuarios
 - *Sintaxis*: history [-report] [-flags] [-options args] [files…]
 
 
@@ -528,7 +484,3 @@ Después de ejecutar un checkout para crear su copia privada de la fuente desde 
 
 
 ***
-
-`aoapedro@hotmail.com`
-
-`zourer@gmail.com`
