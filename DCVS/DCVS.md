@@ -77,11 +77,53 @@ DCVS puede decidir si es o no responsable para cierto **branch** o **delta** o u
 dado. si es así, todas las operaciones de modificacion son permitidas; sino las operaciones  
 de modificación son posibles unicamente sobre el servidor remoto apropiado.
 
-Otro problema que se presenta cuando se trabaja con repositorios DCVS distribuidos son los  
+>Otro problema que se presenta cuando se trabaja con repositorios DCVS distribuidos son los  
 nombres de las configuraciones \(tags\). Estos deben ser únicamente asignables exactamente  
 a un servidor DCVS. DCVS resuelve este problema de una forma muy simple, expandiendo los  
 tags con un prefijo especifico del servidor como: **_at_**dcvs**_mydomain_**org, así no  
 ocurren conflictos en el espacio de nombre del tag.
+
+
+##Instalación desde código fuente
+----------------------------------
+
+Crear un directorio local, por ejemplo ~/word/dcvs:
+> **mkdir ~/work/dcvs**
+
+Acceda al directorio:
+> **cd ~/work/dcvs**
+
+Obtenga las fuentes con CVS o CVSup como se describe en:
+>https://dcvs.elegosoft.com/dcvs-download-en.php
+
+Alternativamente, desempaquete el código fuente, por ejemplo:
+
+>**tar xzf dcvs-src-0.1.2.tar.gz**
+
+Si no ha creado el usuario y grupo dcvs, en este momento es conveniente crearlo
+
+Entre al directorio producción
+
+>**cd prod**
+
+Puede usar make de GNU o BSD para construir e instalar todos lo programas:
+
+>**make all**
+
+>**make install**
+
+Puede revisar los ajustes con:
+
+>**make info**
+
+Si tiene problemas de paquetes viejos, puede actualizar con:
+
+>**make tcp install-tcp**
+
+>**make parseparams install-parseparams**
+
+
+Probablemente necesitara permisos de root para la instalacion.
 
 ##Comandos
 ----------
