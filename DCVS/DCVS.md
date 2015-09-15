@@ -84,15 +84,13 @@ Distributed Concurrent Version System
 
 >Para lograr esto, DCVS asigna un unico rango de **branch numbers** a cada par de servidores. Todos los rangos para todos los servidores deben ser mutuamente excluyentes. cada servidor DCVS puede decidir si es o no responsable para cierto **branch** o **delta** o un archivo dado. si es así, todas las operaciones de modificacion son permitidas; sino las operaciones de modificación son posibles unicamente sobre el servidor remoto apropiado.
 
-<<<<<<< HEAD
 >Otro problema que se presenta cuando se trabaja con repositorios DCVS distribuidos son los  
 nombres de las configuraciones \(tags\). Estos deben ser únicamente asignables exactamente  
 a un servidor DCVS. DCVS resuelve este problema de una forma muy simple, expandiendo los  
 tags con un prefijo especifico del servidor como: **_at_**dcvs**_mydomain_**org, así no  
 ocurren conflictos en el espacio de nombre del tag.
-=======
+
 >Otro problema que se presenta cuando se trabaja con repositorios DCVS distribuidos son los nombres de las configuraciones \(tags\). Estos deben ser únicamente asignables exactamente a un servidor DCVS. DCVS resuelve este problema de una forma muy simple, expandiendo los tags con un prefijo especifico del servidor como: **_at_**dcvs**_mydomain_**org, así no ocurren conflictos en el espacio de nombre del tag.
->>>>>>> b00d1d9cdffc14c3dacbd7e3d48099ec56cbb05e
 
 
 ##Instalación desde código fuente
