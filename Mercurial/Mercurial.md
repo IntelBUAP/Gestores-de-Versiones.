@@ -251,10 +251,13 @@ Esto imprime una lista de cambios junto con su fecha, el usuario que los confirm
 
 En algún momento del desarrollo de un proyecto, podrías querer regresar en el historial para hacer cambios directamente, por ejemplo, porque un cambio anterior introdujo un *bug* y quieres repararlo cuando ocurrió.
 
+Para ver una versión previa de tu código, puedes usar **update**. Vamos a asumir que quieres ver la revisión 1.
+
 To look at a previous version of your code, you can use update. Let's assume that you want to see revision 1.
 ```
 $ hg update 1
 ```
+Ahora tu código regresó a la revisión 1, el segundo **commit** (Mercurial inicia
 Now your code is back at revision 1, the second commit (Mercurial starts counting at 0). To check if you're really at that revision, you can use identify -n.
 ```
 $ hg identify -n
