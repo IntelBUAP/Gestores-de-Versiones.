@@ -197,6 +197,114 @@ $ svn copy nombre del repo/trunk -r #revisión nombre del repo/tags/nombre de la
 Si se desea excluir archivos generados manualmente y no se quieren subir al repositorio podemos agregarlos a la lista de exclusión con el siguiente comando:
 $ svn propedit svn:ignore
 
+## Instalacion Debian
+
+Instalación del SVN
+~>sudo apt-get install subversion
+
+Instalación de las herramientas
+~>sudo apt-get install subversion-tools
+
+**Comandos**
+
+* **Conseguir el código:**
+
+~> svn checkout file:///ruta/hasta/repositorio/ProyectoA/trunk /directorio/de/
+trabajo/ProyectoA/
+
+
+* **Detecta todos los cambios de fichero y árbol que el cliente ha hecho en su 
+copia local:** 
+
+~> svn status Véase la documentación sobre este comando para entender mejor la 
+salida que muestra su ejecución.
+
+
+* **Actualizar el código del proyecto:**
+
+~> svn update
+ 
+
+* **Tras modificar y guardar los cambios, se envian al server:**
+
+~> svn commit --message 'comentario'
+
+
+* **Añadir archivos al código:**
+
+~> svn add /archivo-N/ --force
+
+
+* **Mover o renombrar archivos en la copia local:**
+
+svn move archivo_inicial   archivo_final
+
+
+* **Mover o renombrar archivos en la copia del servidor svn:**
+
+svn move -m "Mover archivo" http://dominio.que.setenga/repositorio/trunk/
+archivo_a_modificar.h  http://dominio.que.setenga/repositorio/trunk/archivo_
+modificado.h
+
+
+* **o bien moverlo a otro directorio del mismo proyecto:**
+
+svn move -m "Muevo el archivo install.php a includes/ " file:///home/Usuario/
+repositorio/ProyectoA/trunk/install.php  file:///home/Usuario/repositorio/
+ProyectoA/trunk/includes/install.php
+
+
+* **Borrar archivos:**
+
+~> svn delete archivo
+
+
+* **Rechazar los cambios en un archivo:**
+
+~> svn revert archivo
+
+
+* **Volver a una versión anterior determinada:**
+
+~> svn update -r N
+
+Donde N denota la revisión N que a su vez representa el estado del sistema de 
+ficheros del repositorio tras el envío de cambios N-ésimo.
+
+
+* **Ver un informe de los cambios producidor:**
+
+~> svn log 
+
+
+* **Fijar una versión, crear una rama, etiquetandola con un nombre sencillo:**
+
+* **Etiquetando la última versión:**
+
+~> svn copy file:///path/repositorio/trunk file:///path/repositorio/tags/0.01-
+prerelease -m "Version 0.01"
+
+
+* **O bien especificando una revisión concreta:**
+
+~> svn copy -r 3 file:///path/repositorio/trunk file:///path/repositorio/tags/
+0.03-prerelease -m "Version 0.03"
+
+
+* **Para hacer una copia limpia del código, y poderlo distribuir**
+
+~> svn export file:///path/repositorio/ProyectoA/trunk
+~> tar -cvf proyectoA.tar trunk
+~> gzip proyectoA.tar
+
+* **Hacer copias de seguridad del repositorio:**
+
+~> svnadmin dump /paht/repositorio/ProyectoA | gzip -9 > dump_svn_proyectoA.gz 
+Si se incluye en el CRON, se harán las copias de seguridad cada tanto de una 
+manera automática.
+
+
+
 >* Andy Daniel Cruz Ramos
 >* Mónica Conde Domínguez
 >* Luisa Cerón Perea
