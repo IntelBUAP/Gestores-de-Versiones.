@@ -7,13 +7,10 @@ Distributed Concurrent Version System
 + Características
 + Instalación desde código fuente
 + Comandos y descripción
-<!-- + Instalación y setup de clientes -->
 
 ![Imagen][DCVS]
 [DCVS]: pictures/CVCSvsDVCS.png  "CVCSvsDVCS"
 
-
-CVCSvsDVCS
 ## Introduccion
 ---------------
 
