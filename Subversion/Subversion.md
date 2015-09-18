@@ -197,9 +197,9 @@ $ svn copy nombre del repo/trunk -r #revisión nombre del repo/tags/nombre de la
 Si se desea excluir archivos generados manualmente y no se quieren subir al repositorio podemos agregarlos a la lista de exclusión con el siguiente comando:
 $ svn propedit svn:ignore
 
->### Andy Daniel Cruz Ramos
->### Mónica Conde Domínguez
->### Luisa Cerón Perea
->### Edilzar Cisneros Ancheyta
->### Juliana Yarid Castro Rodríguez
+>* Andy Daniel Cruz Ramos
+>* Mónica Conde Domínguez
+>* Luisa Cerón Perea
+>* Edilzar Cisneros Ancheyta
+>* Juliana Yarid Castro Rodríguez
 
