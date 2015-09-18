@@ -5,8 +5,9 @@ Distributed Concurrent Version System
 + Introdución
 + Historia
 + Características
++ Instalación desde código fuente
 + Comandos y descripción
-+ Instalación y setup de clientes
+<!-- + Instalación y setup de clientes -->
 
 ![Imagen][DCVS]
 [DCVS]: pictures/CVCSvsDVCS.png  "CVCSvsDVCS"
@@ -101,39 +102,50 @@ ocurren conflictos en el espacio de nombre del tag.
 ----------------------------------
 
 Crear un directorio local, por ejemplo ~/word/dcvs:
-> **mkdir ~/work/dcvs**
+```sh 
+$ mkdir ~/work/dcvs
+```
 
 Acceda al directorio:
-> **cd ~/work/dcvs**
+```sh 
+$ cd ~/work/dcvs
+```
 
-Obtenga las fuentes con CVS o CVSup como se describe en:
->https://dcvs.elegosoft.com/dcvs-download-en.php
+Obtenga las fuentes con CVS o CVSup como se describe en: [Descarga de DCVS](https://dcvs.elegosoft.com/dcvs-download-en.php)
 
 Alternativamente, desempaquete el código fuente, por ejemplo:
 
->**tar xzf dcvs-src-0.1.2.tar.gz**
+```sh 
+$ tar xzf dcvs-src-0.1.2.tar.gz
+```
 
 Si no ha creado el usuario y grupo dcvs, en este momento es conveniente crearlo
 
 Entre al directorio producción
 
->**cd prod**
+```sh 
+$ cd prod
+```
 
 Puede usar make de GNU o BSD para construir e instalar todos lo programas:
 
->**make all**
-
->**make install**
+```sh 
+$ make all
+$ make install
+```
 
 Puede revisar los ajustes con:
 
->**make info**
+```sh
+$ make info
+```
 
 Si tiene problemas de paquetes viejos, puede actualizar con:
 
->**make tcp install-tcp**
-
->**make parseparams install-parseparams**
+```sh
+$ make tcp install-tcp
+$ make parseparams install-parseparams
+```
 
 
 Probablemente necesitara permisos de root para la instalacion.
@@ -141,123 +153,148 @@ Probablemente necesitara permisos de root para la instalacion.
 ##Comandos
 ----------
 
->**dcvs checkout** módulos...
-
+```sh
+$ dcvs checkout [Módulos]
+```
 >Crea su copia privada de las fuentes de los  módulos. Puede trabajar con esta copia sin interferir con otros trabajos.
 
->**dcvs update**
-
+```sh
+$ dcvs update
+```
 >Ejecute este comando desde su directorio privado cuando deseé actualizar sus copias con los cambios que otros desarrolladores han realizado en el repositorio fuente.
 
->**dcvs add** file...
+```sh
+$ dcvs add file...
+```
+>Este comando agregará nuevos archivos de su directorio de trabajo al grabado de **dcvs**. Los archivos serán agregados al repositorio la próxima vez que ejecute  ```$dcvs commit```.
 
->Este comando agregará nuevos archivos de su directorio de trabajo al grabado de **dcvs**. Los archivos serán agregados al repositorio la próxima vez que ejecute  **'dcvs commit'**.
+```sh
+$ dcvs remove file...
+```
+>Este comando declara que usted quiere eliminar archivos de el repositorio. Los archivos eliminado no afectan a otros hasta que ejecute el comando ``` $dcvs commit```.
 
->**dcvs remove** file...
-
->Este comando declara que usted quiere eliminar archivos de el repositorio. Los archivos eliminado no afectan a otros hasta que ejecute el comando **'dcvs commit'**.
-
->**dcvs commit** file...
-
+```sh
+$ dcvs commit file...
+```
 >Use este comando cuando deseé publicar sus cambios a otros desarrolladores, mediante la incorporación en el repositorio fuente.
 
 ###Nuevos comandos en DCVS
 
->**catcset**
+```sh
+$ catcset
+```
+>Muestra uno o mas archivos *changeset*, que fueron previamente creados con ```mkcset```.
 
->Muestra uno o mas archivos *changeset*, que fueron previamente creados con **mkcset**.
+```sh
+$ catsnap
+```
+>Muestra uno o mas archivos *snapshot*, que fueron previamente creados con ```mksnap```.
 
->**catsnap**
+```sh
+lscset
+```
+>Lista los *changesets* existentes, que fueron previamente creados con ```mkcset```.
 
->Muestra uno o mas archivos *snapshot*, que fueron previamente creados con **mksnap**.
+```sh
+$ lssnap
+```
+>Lista los *snapshots*, que fueron previamente creados con ```mksnap```.
 
->**lscset**
-
->Lista los *changesets* existentes, que fueron previamente creados con **mkcset**.
-
->**lssnap**
-
->Lista los *snapshots*, que fueron previamente creados con **mksnap**
-
-
->**mkcset**
-
+```sh
+mkcset
+```
 >Crea un nuevo *changeset*, basado en dos revisiones, *snapshots* o revisiones.
 
->**mksnap**
-
+```sh
+$ mksnap
+```
 >crea un nuevo *snapshot*, basado en una reivison, fecha o la copia de trabajo.
 
 ###Comandos CVS en DCVS
 
->**add**
-
+```sh
+$ add
+```
 >Agrega un nuevo archivo o directorio al repositorio.
 
->**admin**
-
+```sh
+$ admin
+```
 >Ejecuta funciones de control en el repositorio fuente.
 
->**checkout**
-
+```sh
+$ checkout
+```
 >Crea un directorio de trabajo de archivos fuente para la edición.
 
->**commit**
-
+```sh
+$ commit
+```
 >Aplica cambios, adiciona y elimina en el repositorio fuente, desde su directorio de trabajo.
 
->**diff**
-
+```sh
+$ diff
+```
 >Muestra diferencias entre los archivos de trabajo y el repositorio fuente, o entre dos revisiones en el repositorio.
 
->**export**
-
+```sh
+$ export
+```
 >Prepara copias de un conjunto de archivos fuente para enviar fuera del sitio.
 
->**history**
-
+```sh
+$ history
+```
 >Muestra reportes de comandos **dcvs** que usted u otros ejecutaron en un archivo particular o directorio en el repositorio fuente.
 
->**import**
-
+```sh
+$ import
+```
 >Incorpora un conjunto de actualizaciones desde fuera del sitio dentro de el repositorio fuente.
 
->**init**
-
+```sh
+$ init
+```
 >Inicializa un repositorio añadiendo el subdirectorio DCVSROOT y algunos archivos de control. Deberá usar este comando o inicializar el repositorio de alguna otra manera antes de ser usado.
 
->**log**
-
+```sh
+$ log
+```
 >Muestra el registro de información.
 
->**rdiff**
-
+```sh
+$ rdiff
+```
 >Prepara una colección de *diffs* como un archivo parche entre dos liberaciones en el repositorio.
 
->**release**
-
+```sh
+$ release
+```
 >Cancela un *dcvs checkout* abandonando cualquier cambio.
 
->**remove**
-
+```sh
+$ remove
+```
 >Elimina archivos de el repositorio fuente, algunos archivos en espera de *dcvs commit*.
 
->**rtag**
-
+```sh
+$ rtag
+```
 >Explicitamente especifica una etiqueta simbólica para una particular revisión de los archivos en el repositorio fuente.
 
-
->**status**
-
+```sh
+$ status
+```
 >Muestra el actual estado de los archivos: ultima versión, versión en el directorio de trabajo, si la versión de trabajo ha sido editada y opcionalmente etiqueta simbólica en el archivo RCS.
 
->**tag**
-
+```sh
+$ tag
+```
 >Especifica una etiqueta simbólica para el repositorio. Por default etiqueta las ultimas revisiones que fueron sincronizadas con su directorio de trabajo.
 
-
->**update**
-
+```sh
+$ update
+```
 >Actualiza su directorio de trabajo con los últimos cambios del repositorio. Merges son realizados automáticamente cuando es posible.
 
   
