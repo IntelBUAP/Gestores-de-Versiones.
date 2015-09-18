@@ -304,5 +304,5 @@ $ update
 |Hijuitl Cuatlayo Jose Patricio | patriciohc.0@gmail.com |
 |Jimenez Coronado Roberto | correo |
 |Jiménez Pacheco Daniel| correo |
-|Lira Huerta Ernesto| correo |
+|Lira Huerta Ernesto| net_lh@hotmail.com |
 |Ortega Rojas Luis Enrique | ortegarle@gmail.com |
