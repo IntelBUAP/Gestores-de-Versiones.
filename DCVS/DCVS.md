@@ -9,8 +9,10 @@ Distributed Concurrent Version System
 + Instalación y setup de clientes
 
 ![Imagen][DCVS]
-[DCVS]: pictures/svg.png  "Visualization of the "history tree" of a revision controlled project, showing branching, merging, tagging, etc."
+[DCVS]: pictures/CVCSvsDVCS.png  "CVCSvsDVCS"
 
+
+CVCSvsDVCS
 ## Introduccion
 ---------------
 
@@ -92,6 +94,8 @@ ocurren conflictos en el espacio de nombre del tag.
 
 >Otro problema que se presenta cuando se trabaja con repositorios DCVS distribuidos son los nombres de las configuraciones \(tags\). Estos deben ser únicamente asignables exactamente a un servidor DCVS. DCVS resuelve este problema de una forma muy simple, expandiendo los tags con un prefijo especifico del servidor como: **_at_**dcvs**_mydomain_**org, así no ocurren conflictos en el espacio de nombre del tag.
 
+![Imagen][DCVStree]
+[DCVStree]: pictures/svg.png  "Visualization of the "history tree" of a revision controlled project, showing branching, merging, tagging, etc."
 
 ##Instalación desde código fuente
 ----------------------------------
