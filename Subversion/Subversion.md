@@ -1,6 +1,9 @@
 
 Control de Versiones Subversion
 ===============================
+<center>
+<img  src="Imagenes/LogoSubversion.jpg" height="200" width="200"/>
+</center>
 
 Introducción
 ------------
@@ -144,7 +147,9 @@ Subversión no tiene un equipaje histórico; está implementado como una colecci
 
 - **Arquitectura de Subversión**
 
-![](http://image.slidesharecdn.com/presentacion-nuestra-1234631356296993-3/95/control-de-versiones-con-subversion-9-728.jpg?cb=1234609891)
+<center>
+<img  src="Imagenes/ArquitecturaSubversion.jpg" height="450" width="400"/>
+</center>
 
 **Comandos y su descripción.**
 
