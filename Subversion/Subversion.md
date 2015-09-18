@@ -29,15 +29,14 @@ Adicionalmente, utilizar un sistema de control de versiones nos permite cosas co
 
 ##Historia
 
-<p style="text-align: justify;"> A principios de 2000, *CollabNet, Inc*. 
-(http://www.collab.net) comenzó a buscar a los desarrolladores para escribir 
-un sustituto para **CVS**.</p>
+A principios de 2000, *CollabNet, Inc*. (http://www.collab.net) comenzó a 
+buscar a los desarrolladores para escribir un sustituto para **CVS**.
 
-<p style="text-align: justify;"> CollabNet ofrece una suite de software de 
-colaboración denominado CollabNet Enterprise Edition (CEE), de los cuales uno 
-de los componentes era el control de versiones. Aunque CEE utiliza CVS como su 
-sistema de control de versiones inicial, las limitaciones de CVS eran evidentes 
-desde el principio, y CollabNet sabía que tendría que encontrar algo mejor.</p> 
+CollabNet ofrece una suite de software de colaboración denominado CollabNet 
+Enterprise Edition (CEE), de los cuales uno de los componentes era el control 
+de versiones. Aunque CEE utiliza CVS como su sistema de control de versiones 
+inicial, las limitaciones de CVS eran evidentes desde el principio, y CollabNet
+ sabía que tendría que encontrar algo mejor.
 
 Desafortunadamente, CVS se había convertido en el estándar de facto en el mundo
  del código abierto en gran medida porque no había nada mejor, al menos no bajo
