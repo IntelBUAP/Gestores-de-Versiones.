@@ -65,7 +65,7 @@ Distributed Concurrent Version System
 
 
 
-![Alt text](Workflow.jpg "WorkFlow")
+![Alt text](pictures/Workflow.jpg "WorkFlow")
 
 
 
