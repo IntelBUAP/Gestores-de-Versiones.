@@ -40,6 +40,9 @@ Distributed Concurrent Version System
 >###Sobre el esquema de trabajo
 
 
+![Alt text](pictures/DVC.jpg  "Distributed Version Control")
+
+
 > **Los conceptos clave de este esquema son:**
 
 > - Los esquemas centralizados se enfocan en sincronizar, seguir y  respaldar archivos, los distribuidos se enfocan en compartir cambios,  cada cambio tiene un identificador único.
@@ -49,6 +52,9 @@ Distributed Concurrent Version System
 > - Pull: obtener cambios de otro repositorio.
 
 
+![Alt text](pictures/MasterRepository.jpg  "Master Repository")
+
+
 > **Las principales ventajas son:**
 
 > - Es rápido, los diffs, que son comparaciones que se realizan entre la versión actual del proyecto y las anteriores, los commits y los reverts, que son almacenar de forma segura los cambios y revertir  alguna modificación respectivamente, todo ello ocurre de forma local.
@@ -56,6 +62,12 @@ Distributed Concurrent Version System
 > - Se adapta bien a los cambios.
 > - Realizar un desarrollo local (branch) y enviarlo para integrarse  al repositorio principal (merge) son operaciones que se realizan  fácilmente.
 > -  Requiere poco mantenimiento.
+
+
+
+![Alt text](Workflow.jpg "WorkFlow")
+
+
 
 >### Dos exponentes importantes son git y Mercurial
 
