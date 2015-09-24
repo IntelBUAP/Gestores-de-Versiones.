@@ -257,18 +257,17 @@ To look at a previous version of your code, you can use update. Let's assume tha
 ```
 $ hg update 1
 ```
-Ahora tu código regresó a la revisión 1, el segundo **commit** (Mercurial inicia
-Now your code is back at revision 1, the second commit (Mercurial starts counting at 0). To check if you're really at that revision, you can use identify -n.
+Ahora tu código regresó a la revisión 1, el segundo **commit** (Mercurial inicia contando en el 0). Para checar si realmente tienes esa revisión, puedes usar identify -n.
 ```
 $ hg identify -n
 ```
-To update to the most recent revision, you can use "tip" as revision name.
+Para acutalizar a la revision mas actual, puedes usat "tip" como nombre de revision.
 ```
 $ hg update tip
 ```
 **Corregir errores en versiones anteriores**
 
-When you find a bug in some earlier revision you have two options: either you can fix it in the current code, or you can go back in history and fix the code exactly where you did it, which creates a cleaner history.
+Cuando estás buscando un bug en una revision anterior tienes dos opciones: arreglarlo en el código actual, o regresar en el historial y buscar arreglar el código exactamente donde insertaste el bug, lo cual genera un historial limpio.
 
 To do it the cleaner way, you first update to the old revision, fix the bug and commit it. Afterwards you merge this revision and commit the merge. Don't worry, though: Merging in mercurial is fast and painless, as you'll see in an instant.
 
