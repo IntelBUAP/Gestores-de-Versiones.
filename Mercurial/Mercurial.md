@@ -269,36 +269,36 @@ $ hg update tip
 
 Cuando estás buscando un bug en una revision anterior tienes dos opciones: arreglarlo en el código actual, o regresar en el historial y buscar arreglar el código exactamente donde insertaste el bug, lo cual genera un historial limpio.
 
-To do it the cleaner way, you first update to the old revision, fix the bug and commit it. Afterwards you merge this revision and commit the merge. Don't worry, though: Merging in mercurial is fast and painless, as you'll see in an instant.
+Para hacer esto de una forma correcta, primero puedes actualizar la revision anterior, arreglar el bug y hacer un commit. Después une esta revision y haz commit del merge. No te preocupes, merging en Mercurial is rápido y sin dolor, como tú podrás verlo en un instante.
 
-Let's assume the bug was introduced in revision 1.
+Ahora asumamos que el bug fue introducido en la revision 1.
 ```
 $ hg update 1
 $ echo 'print("Hello Mercurial")' > hello.py
 $ hg commit
 ```
-Now the fix is already stored in history. We just need to merge it with the current version of your code.
+Ahora el arreglo esta guarda en el historial. Solo necesitamos unir esto con le version actual de tu código.
 ```
 $ hg merge
 ```
-If there are conflicts use hg resolve - that's also what merge tells you to do in case of conflicts.
+Si hay conflictos usa hg resolve - tambien te dira que hacer en caso de que existan conflictos.
 
-First list the files with conflicts
+Primero lista los archivos con conflictos
 ```
 $ hg resolve --list
 ```
-Then resolve them one by one. resolve attempts the merge again
+Luego resuelve uno por uno e intenta unir otra vez
 ```
 $ hg resolve conflicting_file
 ```
 (fix it by hand, if necessary)
 
-Mark the fixed file as resolved
+Marca el archivo como resuelto
 ```
 $ hg resolve --mark conflicting_file
 ```
-Commit the merge, as soon as you resolved all conflicts. This step is also necessary when there were no conflicts!
+Haz un commit del merge tan pronto como hayas corregido todos los conflictos. Este paso is tambien necesario cuando no hay conflictos!
 ```
 $ hg commit
 ```
-At this point, your fix is merged with all your other work, and you can just go on coding. Additionally the history shows clearly where you fixed the bug, so you'll always be able to check where the bug was.
+A estas alturas, puedes arreglar y unir todo tu trabajo, y solo programa. Adicionalmente el historial muestra claramente donde arreglaste el bug y simepre podrás checar donde estaba el bug. 
