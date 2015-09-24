@@ -41,6 +41,326 @@ Mercurial presenta un set de comandos con el que la mayoría de los usuarios de 
 Mercurial es software gratuito licenciado bajo los términos de la GNU General Public License Version 2 o cualquier version más reciente.
 
 ##Tutorial para instalar clientes Linux, MacOS X, y otras variantes de Unix
+#Prerequisites
+
+
+Some Linux distributions fail to include bits of Python's distutils by default, in which case you'll need to install a package usually called python-dev. Suse 9.3 needs python-devel which is not on the installation media: a download from Suse is required. FreeBSD users please see the note below.
+
+## Mercurial needs Python to run:
+
+* If your system does not ship with Python, install it first. Version 2.4 or greater is required.
+* You need Python C header files. They may be in package called python-dev or pythonX.Y-dev (where X.Y is the specific version of Python in use, such as 2.4).
+* You'll also need a C compiler (such as gcc) and a 3-way MergeProgram.
+
+For the documentation, the prerequisites depend on which version of Mercurial you are trying to install:
+
+* For Mercurial 1.3.x and earlier, building the documentation requires AsciiDoc and xmlto, and the latter in turn requires libxslt.
+* Building the documentation for Mercurial 1.4 and later requires Docutils.
+
+You may want to check your operating system distribution for these (and possibly other software required by the prerequisites themselves). If you don't want to build and install the documentation, substitute             `make install-bin` and `make install-home-bin` for `make install` and `make install-home` below.
+
+ 
+> You can save a lot of time by installing as many prerequisites from system packages as you can. Your distribution will provide information about the dependencies for Python and Mercurial, and although many of these are strictly optional (and, for those supposedly required by Python, unrelated to the normal functioning of Mercurial), some of these are vital. If you are going to build Python, be sure to get the "build dependencies" (the -dev versions of the dependencies) so that Python's configure script can find the header files for various libraries.
+
+> Sites offering an interface to distribution package repositories, such as those for Ubuntu and Debian can be useful in identifying dependencies. The control file in Debian/Ubuntu packages is also a useful source of build dependency information.
+
+> See "Platform Notes" below for recipes covering a range of different environments.
+
+## Unpacking the source
+
+The necessary first step:
+
+```
+$ tar xvzf mercurial-<ver>.tar.gz
+$ cd mercurial-<ver>
+```
+##Per-user installation
+
+To install in your home directory (~/bin and ~/lib, actually), run:
+```
+$ make install-home                     # add PYTHON=/path/to/python2.4-or-newer if necessary
+```
+To make hg available as a command, run the following shell commands (for bash) and add them to your shell configuration file (such as `.bashrc` or `.bash_profile`):
+
+```
+export PYTHONPATH=${HOME}/lib/python
+export PATH=${HOME}/bin:$PATH
+```
+
+On some 64-bit systems (but not all), you'll need to use lib64 instead of lib in PYTHONPATH. The rule of thumb is that if /usr/lib64 exists, use lib64, otherwise lib. Besides being conservative for your own system, if you are putting up Mercurial to manage a web site or application that is being hosted for you by an ISP, this is likely the method which will least conflict with your host's environment.
+
+
+>On some systems, a remote, interactive login via ssh will not cause .bashrc to be invoked. It may therefore be appropriate to specify environment variable definitions in your .bash_profile instead (or ensure that your .bash_profile sources your .bashrc appropriately).
+
+>This behaviour is explained in the bash manual page: for an "interactive login shell", bash reads from the user's .bash_profile, .bash_login, or .profile instead of .bashrc (which is read for "an interactive shell that is not a login shell" or "when it is being run by the remote shell daemon"). This seems to contradict the behaviour for remote logins via rsh where .bashrc does get read.
+
+>For hg operations directly acting on remote repositories over SSH (instead of activities involving an interactive login and actually typing the commands in a remote shell), the remote .bashrc file should be invoked as part of the login process. Thus it makes sense to configure paths for Mercurial in this file and reference it in the other configuration files.
+
+>Unfortunately, some combinations of OpenSSH and bash will not cause .bashrc to be invoked (for reasons discussed in this thread). See guidance in the FAQ for workarounds.
+
+##System-wide installation
+
+To install system-wide, you'll need **root** privileges.
+
+
+`$ make install`
+
+By default, Mercurial is installed under /usr/local, and on some systems an adjustment to the PATH environment variable may be required:
+
+```
+$ export PATH=${PATH}:/usr/local/bin                                     # assumes no older hg exists in the standard path
+
+```
+If Python does not reside under `/usr/local`, an adjustment to the PYTHONPATH environment variable is necessary. For example, for Python 2.5:
+
+```
+$ export PYTHONPATH=/usr/local/lib/python2.5/site-packages:${PYTHONPATH} # bash/ksh syntax
+```
+
+If the default python is older than 2.4, use the `PYTHON` option:
+
+```
+$ make install PYTHON=/path/to/python2.4
+```
+###Changing the prefix
+
+With this method, the addition of the `PREFIX` option will keep the Mercurial libraries out of /usr/local and put them instead where the prefix specifies similar to the way that install-home above keeps Mercurial local to a user in the per-user-installation. For example:
+
+```
+$ make install PREFIX=/var/hg
+```
+
+The `PYTHONPATH` and `PATH` will also need to be appropriately adjusted if `PREFIX` option is used.
+
+For instance, using Python 2.5, and with `PREFIX=/var/hg`, you will need to set `PYTHONPATH` as follows in your environment:
+
+```
+$ export PYTHONPATH=/var/hg/lib/python2.5/site-packages:${PYTHONPATH} # bash/ksh syntax
+
+```
+Alternatively, you can also create a wrapper script that sets the `PYTHONPATH` variable, regardless of the user's environment:
+
+```
+#!/bin/sh
+mv /var/hg/bin/hg /var/hg/bin/hg.py
+cat > /var/hg/bin/hg <<\EOF
+PYTHONPATH=/var/hg/lib/python2.5/site-packages:${PYTHONPATH}
+export PYTHONPATH
+exec /var/hg/bin/hg.py "$@"
+EOF
+```
+If `PYTHONPATH` is not correctly set, then `hg debuginstall` will print an error message that says:
+
+```
+ImportError: No module named mercurial
+```
+
+or
+
+```
+abort: couldn't find mercurial libraries in [...]
+(check your install and PYTHONPATH)
+```
+
+##Build directory installation
+
+If you'd like to run development versions of Mercurial directly out of the Mercurial source distribution directory, do the following:
+
+
+`$ make local`
+
+This will build Mercurial's extensions in-place. Then, simply make a symbolic link to the hg script from a directory in your path.
+
+###Some notes on the C compiler
+
+The C compiler is used for compiling Mercurial's extensions written in C.
+
+Sometimes, Python (actually distutils) may be calling a different C compiler (usually the one used for compiling Python itself) than the one installed on your system. In this case, you can try set the environment variable CC to tell Python to use your favourite C compiler.
+
+With Python 2.4, you may want to set the environment variable LDSHARED for generating shared objects on some platforms.
+
+##Testing a new install
+
+And finally:
+
+```
+$ hg debuginstall   # sanity-test the install
+Checking encoding (UTF-8)...
+Checking extensions...
+Checking templates...
+Checking patch...
+Checking merge helper...
+Checking commit editor...
+Checking username...
+No problems detected
+```
+If you get complaints about missing modules, you probably haven't set PYTHONPATH correctly.
+
+##Platform Notes
+
+###Fedora
+
+**Fedora 18 (Spherical Cow)**
+
+In order to install mercurial on Fedora 18, you can run the command below:
+
+
+`$ sudo yum install mercurial`
+
+###FreeBSD
+
+FreeBSD provides the Ports System to easily install and manage applications. To install mercurial on FreeBSD, use the port (typically found in `/usr/ports/devel/mercurial`), or install and use the `portinstall` tool. Read Updating FreeBSD Ports to make certain you have the most recent ported version of mercurial and all dependent packages.
+
+###NetBSD
+
+NetBSD's pkgsrc system provides a package for mercurial in `pkgsrc/devel/mercurial`. To install it, run:
+
+```
+$ cd /usr/pkgsrc/devel/mercurial
+$ make install
+```
+See the pkgsrc documentation for more information on pkgsrc, and how to get, update and use it.
+
+###OS X
+
+For Mercurial 1.4 and later, building the documentation requires Docutils. This can be installed via macports:
+
+
+`$ sudo port install py26-docutils`
+
+For Mercurial 1.3.x and earlier, source installation requires AsciiDoc and xmlto in order to build documentation. These are easy to install via fink or macports:
+
+fink:
+
+```
+$ sudo apt-get install asciidoc xmlto # get the latest binary
+$ fink install asciidoc xmlto # build from source
+```
+macports:
+
+
+`$ sudo port install asciidoc xmlto`
+
+Do one of these before building mercurial.
+
+For some people on OS X 10.5, Mercurial fails to run with an error similar to the following:
+
+```
+Traceback (most recent call last):
+  File "/opt/local/bin/hg", line 18, in <module>
+    mercurial.util.set_binary(fp)
+  File "/opt/local/lib/python2.5/site-packages/mercurial/demandimport.py", line 74, in __getattribute__
+    self._load()
+  File "/opt/local/lib/python2.5/site-packages/mercurial/demandimport.py", line 46, in _load
+    mod = _origimport(head, globals, locals)
+  File "/opt/local/lib/python2.5/site-packages/mercurial/util.py", line 93, in <module>
+    _encoding = locale.getlocale()[1]
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/locale.py", line 462, in getlocale
+    return _parse_localename(localename)
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/locale.py", line 375, in _parse_localename
+    raise ValueError, 'unknown locale: %s' % localename
+ValueError: unknown locale: UTF-8
+```
+This appears to be due to the version of Terminal that comes with OS X 10.5 setting the value of the environment variable LC_CTYPE to a bad value, causing Python to throw. You can work around this problem either by going to "Terminal > Preferences... > Settings" and unchecking the option "Set LANG environment variable on startup", or else you can set the environment variables LC_ALL and LANG to appropriate values in your ~/.profile (e.g. add export LC_ALL=en_US.UTF-8 and export LANG=en_US.UTF-8). For more information on the LC_* and LANG variables see man locale.
+
+###Ubuntu
+
+**10.04 LTS Lucid Lynx**
+
+In order to run mercurial built from source on Ubuntu 10.04 LTS Lucid Lynx, if you have previously installed the mercurial package with:
+
+
+`$ sudo apt-get install mercurial`
+
+or using the synaptic package manager, then you will need to remove it and the mercurial-common package installed automatically as a dependency. You can do so with the following commands:
+
+```
+$ sudo apt-get remove mercurial --purge
+$ sudo apt-get autoremove   # will delete the now unused mercurial-common
+```
+You can also explicitly remove the mercurial-common package like this:
+
+
+`$ sudo apt-get remove mercurial-common --purge`
+
+If you fail to remove mercurial-common, then you will get an error when you attempt to run hg about a missing module which will mimic not having python-dev installed. (ie osutil module not being found).
+
+####6.06 LTS Dapper Drake
+
+In order to build mercurial on Ubuntu Dapper 6.06, it is first necessary to install gcc, the standard libraries, and the Python header libraries. This can be done with the following command:
+
+
+`sudo apt-get install build-essential gcc python-dev`
+
+For generating documentation (done during the installation) you will also have to install the AsciiDoc and xmlto packages (for Mercurial 1.3.x and earlier):
+
+
+`sudo apt-get install asciidoc xmlto`
+
+###SUSE/SLES
+
+In order to build the inotify hgext on SUSE/SLES you may have to edit `_inotify.c` and change the include line for `inotify.h` from:
+
+```
+#include <sys/inotify.h>
+```
+
+to:
+
+
+`#include <linux/inotify.h>`
+
+#### OpenSUSE 13.2, OpenSUSE Tumbleweed and openSUSE 42.1 Milestone 2
+
+
+`sudo zypper install mercurial`
+
+###Arch
+
+Arch has made Python 3 the default system Python. Python 2 is now as /usr/bin/python2. This breaks Mercurial's build process. Here's how to build on Arch:
+
+`PYTHONPATH=`python2 -c 'import sys; sys.stdout.write(":".join(sys.path))'` make local PYTHON=python2`
+
+##Solaris
+
+Here's an example on installing Mercurial on Solaris 2.6 with ActiveState Python 2.4.1 (compiled with Sun CC) and GCC 2.95.3:
+
+
+`$ CC=gcc LDSHARED='gcc -G' python setup.py install`
+
+In our example, the -G option tells GCC to generate shared objects on Solaris, which is equivalent the -shared option on some other platforms. See GCC's manpage for more information on this.
+
+`- I` installed it via make install-home, but I had to do some gcc calls myself (it didn't take -xarch and -x03). -ArneBab
+
+##Solaris 10 (Sparc)
+
+Initially had some issues attempting to use the sunfreeware packages. The version of Python available from there didn't seem to have md5 enabled. Please note that I'm a bit of a novice with Solaris so if someone knows better then please ammend this note - MichaelAnthon
+
+
+1. Ensure that the following packages are installed
+    * SUNWopenssl-include
+    * SUNWopenssl-libraries
+    * SUNWzlib
+    * SMCgcc and SMClgcc346 (I had to upgrade to the 3.4.6 version before it would compile cleanly)
+ 
+
+2. Build python (using gcc from /usr/sfw and the Solaris assembler and linker from /usr/ccs and libraries from /usr/sfw/lib/, /usr/lib and /usr/local/lib)
+
+
+    ```
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/sfw/lib/:/usr/lib:/usr/local/lib
+    export PATH=$PATH:/usr/ccs/bin:/usr/sfw/bin
+    ./configure --libdir=/usr/sfw/lib/ --libdir=/usr/lib --libdir=/usr/local/lib --includedir=/usr/sfw/include --includedir=/usr/include --includedir=/usr/local/include
+    make
+    make install (as root)
+    ```
+
+3. Install setuptools from http://pypi.python.org/pypi/setuptools ( /!\ at this point I had to make a symlink from /usr/bin/python to /usr/bin/python2.6, not sure if the python install SHOULD have done that for me)
+
+4. Install Mercurial
+
+`/usr/local/bin/easy_install -U mercurial`
+
 
 ##Comandos
 El programa ejecutable de Mercurial se llama hg. Cada comando de Mercurial comienza por hg, seguido de un nombre de comando, seguido de posibles opciones y argumentos oportunos.
@@ -253,7 +573,7 @@ En algún momento del desarrollo de un proyecto, podrías querer regresar en el 
 
 Para ver una versión previa de tu código, puedes usar **update**. Vamos a asumir que quieres ver la revisión 1.
 
-To look at a previous version of your code, you can use update. Let's assume that you want to see revision 1.
+
 ```
 $ hg update 1
 ```
