@@ -41,83 +41,76 @@ Mercurial presenta un set de comandos con el que la mayoría de los usuarios de 
 Mercurial es software gratuito licenciado bajo los términos de la GNU General Public License Version 2 o cualquier version más reciente.
 
 ##Tutorial para instalar clientes Linux, MacOS X, y otras variantes de Unix
-#Prerequisites
+###Pre-requisistos
 
 
 Some Linux distributions fail to include bits of Python's distutils by default, in which case you'll need to install a package usually called python-dev. Suse 9.3 needs python-devel which is not on the installation media: a download from Suse is required. FreeBSD users please see the note below.
 
-## Mercurial needs Python to run:
+Algunas distribuciones de Linux no incluyen bits de distutils de Python por defecto, en cuyo caso tendrás que instalar un paquete generalmente llamado python-dev. Suse 9.3 necesuta python-devel que no está en el medio de instalación: se requiere una descarga de Suse. 
 
-* If your system does not ship with Python, install it first. Version 2.4 or greater is required.
-* You need Python C header files. They may be in package called python-dev or pythonX.Y-dev (where X.Y is the specific version of Python in use, such as 2.4).
-* You'll also need a C compiler (such as gcc) and a 3-way MergeProgram.
+### Mercurial necesita Python para funcionar
 
-For the documentation, the prerequisites depend on which version of Mercurial you are trying to install:
+* Si su sistema no viene con Python, instalarlo primero. Se requiere la versión 2.4 o superior.
+* Usted necesita los archivos de cabecera de Python C. Pueden estar en paquete llamado pitón-dev o pythonX.Y-dev (donde XY es la versión específica de Python en uso, tales como 2,4).
+* Usted también necesitará un compilador de C (como gcc) y un 3-ways MergeProgram.
 
-* For Mercurial 1.3.x and earlier, building the documentation requires AsciiDoc and xmlto, and the latter in turn requires libxslt.
-* Building the documentation for Mercurial 1.4 and later requires Docutils.
+Para la documentación, los requisitos dependen de la versión de Mercurial que usted está tratando de instalar:
 
-You may want to check your operating system distribution for these (and possibly other software required by the prerequisites themselves). If you don't want to build and install the documentation, substitute             `make install-bin` and `make install-home-bin` for `make install` and `make install-home` below.
+* Para Mercurial 1.3.x y anteriores, la construcción de la documentación requiere AsciiDoc y xmlto, y éste a su vez requiere libxslt.
+* La construcción de la documentación para Mercurial 1.4 y posteriores requiere Docutils.
 
- 
-> You can save a lot of time by installing as many prerequisites from system packages as you can. Your distribution will provide information about the dependencies for Python and Mercurial, and although many of these are strictly optional (and, for those supposedly required by Python, unrelated to the normal functioning of Mercurial), some of these are vital. If you are going to build Python, be sure to get the "build dependencies" (the -dev versions of the dependencies) so that Python's configure script can find the header files for various libraries.
+Es posible que desee comprobar su distribución del sistema operativo para éstos (requerido por los mismos requisitos y posiblemente otro software). Si usted no quiere construir e instalar la documentación, sustituto `make install-bin` y` make install-home-bin` para `make install` y` make install-hogar del `abajo.
 
-> Sites offering an interface to distribution package repositories, such as those for Ubuntu and Debian can be useful in identifying dependencies. The control file in Debian/Ubuntu packages is also a useful source of build dependency information.
 
-> See "Platform Notes" below for recipes covering a range of different environments.
+### Desempaquetar el fuente
 
-## Unpacking the source
-
-The necessary first step:
+El primer paso es
 
 ```
 $ tar xvzf mercurial-<ver>.tar.gz
 $ cd mercurial-<ver>
 ```
-##Per-user installation
+###Instalación por usuario
 
-To install in your home directory (~/bin and ~/lib, actually), run:
+Para instalar en tu diretorio home (~/bin and ~/lib, actually), ejecutar:
 ```
 $ make install-home                     # add PYTHON=/path/to/python2.4-or-newer if necessary
 ```
-To make hg available as a command, run the following shell commands (for bash) and add them to your shell configuration file (such as `.bashrc` or `.bash_profile`):
+
+Para hacer hg disponible como comando, ejecuta los siguientes comando en a terminal
 
 ```
 export PYTHONPATH=${HOME}/lib/python
 export PATH=${HOME}/bin:$PATH
 ```
+En algunos sistemas de 64 bits (pero no todos), tendrá que utilizar lib64 lugar de lib en PYTHONPATH. La regla general es que si / usr / lib64, use lib64, de lo contrario lib. Además de ser conservador para su propio sistema, si usted está poniendo Mercurial para administrar un sitio web o aplicación que está siendo organizada para usted por un ISP, este es probablemente el método que menos conflictos con el entorno de su anfitrión.
 
-On some 64-bit systems (but not all), you'll need to use lib64 instead of lib in PYTHONPATH. The rule of thumb is that if /usr/lib64 exists, use lib64, otherwise lib. Besides being conservative for your own system, if you are putting up Mercurial to manage a web site or application that is being hosted for you by an ISP, this is likely the method which will least conflict with your host's environment.
 
+> En algunos sistemas, un control remoto de inicio de sesión, interactiva a través de ssh no causará .bashrc para ser invocado. Por lo tanto, puede ser adecuado para especificar las definiciones de variables de entorno en su .bash_profile lugar (o asegurarse de que sus fuentes .bash_profile tu .bashrc apropiadamente).
 
->On some systems, a remote, interactive login via ssh will not cause .bashrc to be invoked. It may therefore be appropriate to specify environment variable definitions in your .bash_profile instead (or ensure that your .bash_profile sources your .bashrc appropriately).
+> Este comportamiento se explica en la página de manual de bash: para un "intérprete interactivo de ingreso", golpe lee .bash_profile del usuario, .bash_login o .profile lugar de .bashrc (que se lee de "un shell interactivo que no es un shell de entrada "o" cuando está siendo dirigido por el demonio de shell remoto "). Esto parece contradecir el comportamiento para las conexiones remotas a través de rsh donde .bashrc es leido.
 
->This behaviour is explained in the bash manual page: for an "interactive login shell", bash reads from the user's .bash_profile, .bash_login, or .profile instead of .bashrc (which is read for "an interactive shell that is not a login shell" or "when it is being run by the remote shell daemon"). This seems to contradict the behaviour for remote logins via rsh where .bashrc does get read.
+> Para las operaciones hg actuando directamente sobre repositorios remotos a través de SSH (en lugar de las actividades que implican un inicio de sesión interactivo y realidad escribiendo los comandos en un shell remoto), el archivo .bashrc remoto debe ser invocada como parte del proceso de inicio de sesión. Así que tiene sentido para configurar rutas para Mercurial en este archivo y hacer referencia a él en los otros archivos de configuración.
 
->For hg operations directly acting on remote repositories over SSH (instead of activities involving an interactive login and actually typing the commands in a remote shell), the remote .bashrc file should be invoked as part of the login process. Thus it makes sense to configure paths for Mercurial in this file and reference it in the other configuration files.
+###La instalación de todo el sistema
 
->Unfortunately, some combinations of OpenSSH and bash will not cause .bashrc to be invoked (for reasons discussed in this thread). See guidance in the FAQ for workarounds.
-
-##System-wide installation
-
-To install system-wide, you'll need **root** privileges.
+Para instalar todo el sistema, tendrá que tener privilegios de root.
 
 
 `$ make install`
 
-By default, Mercurial is installed under /usr/local, and on some systems an adjustment to the PATH environment variable may be required:
+Por defecto, Mercurial se instala en /usr/local, y en algunos sistemas puede ser necesario un ajuste de la variable de entorno PATH:
 
 ```
-$ export PATH=${PATH}:/usr/local/bin                                     # assumes no older hg exists in the standard path
+$ export PATH=${PATH}:/usr/local/bin                                     #Asume que no existe hg mayor en la ruta estándar
 
 ```
-If Python does not reside under `/usr/local`, an adjustment to the PYTHONPATH environment variable is necessary. For example, for Python 2.5:
+Si Python no reside bajo `/usr/local`, un ajuste de la variable de entorno PYTHONPATH es necesario. Por ejemplo, para Python 2.5:
 
 ```
 $ export PYTHONPATH=/usr/local/lib/python2.5/site-packages:${PYTHONPATH} # bash/ksh syntax
 ```
-
-If the default python is older than 2.4, use the `PYTHON` option:
+Si el python por defaul es mayor que 2.4 usar la opcion `PYTHON`:
 
 ```
 $ make install PYTHON=/path/to/python2.4
