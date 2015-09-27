@@ -1,80 +1,61 @@
 
-# CVS (Concurrent Version System).
+### ***Gestor de Versiones: CVS (Concurrent Version System).***
 
-
-## Introducción.
-
-
-En este marco teórico, se describe el concepto de Gestor de Versión CVS. Dado el problema entre los desarrolladores del intercambio de ficheros de código fuente, surge la necesidad de evitar este tipo de conflicto mediante la herramienta mencionada, esto, descrito en la investigación recabada en este documento.
-
-Así mismo, se hace mención de su historia, principales características, uso y manejo del mismo con su respectiva descripción.
-
-Los gestores de versiones, también llamados Herramientas de Gestión de Configuraciones de Software ó Repositorios, son herramientas que permiten a desarrolladores de Proyectos centralizar y coordinar sus trabajos. Manteniendo los registros y cambios de distintos ficheros de un Proyecto; principalmente cógido fuente. Permitiendo la colaboración de distintos desarrolladores e incluyendo la evolución en líneas paralelas de un mismo Proyecto.
-
-Conociendo más características de la misma, hará de nuestro ejercicio y desarrollo una interacción concurrente e independiente.
-
-### Ventajas.
 ***
-```
-	- Aplicación Cliente-Servidor.
-	- Usado para archivos de código fuente y otros tipos de archivos.
-	- Empleado para administrar versiones y cambios sobre archivos.
-	- Difundido bajo licencia de GLP.
-	- Permite la concurrencia de trabajo.
-	- Integración de versiones.
-	- Manejo de múltiples versiones simultáneas.
+#### *** - Introducción.***
 
-```
+<p style="text-align: justify;"> - En este marco teórico, se describe el concepto de Gestor de Versión CVS. Dado el problema entre los desarrolladores del intercambio de ficheros de código fuente, surge la necesidad de evitar este tipo de conflicto mediante la herramienta mencionada, esto, descrito en la investigación recabada en este documento. </p> 
+
+<p style="text-align: justify;">- Así mismo, se hace mención de su historia, principales características, uso y manejo del mismo con su respectiva descripción. </p>
+
+<p style="text-align: justify;"> - Los gestores de versiones, también llamados Herramientas de Gestión de Configuraciones de Software ó Repositorios, son herramientas que permiten a desarrolladores de Proyectos centralizar y coordinar sus trabajos. Manteniendo los registros y cambios de distintos ficheros de un Proyecto; principalmente cógido fuente. Permitiendo la colaboración de distintos desarrolladores e incluyendo la evolución en líneas paralelas de un mismo Proyecto. Conociendo más características de la misma, hará de nuestro ejercicio y desarrollo una interacción concurrente e independiente. </p>
+
+##### - Ventajas.
+
+* Aplicación Cliente-Servidor.
+* Usado para archivos de código fuente y otros tipos de archivos.
+* Empleado para administrar versiones y cambios sobre archivos.
+* Difundido bajo licencia de GLP.
+* Permite la concurrencia de trabajo.
+* Integración de versiones.
+* Manejo de múltiples versiones simultáneas.
+
+##### - Otros sistemas.
+
+* Microsoft Source Safe.
+* Clear Case.
+* Visual Studio Team System Source Control.
+* YACC.
+* DARCS.
+* Apache Subversion (SVN).
+* Git.
+* Mercurial.
+
 ***
-
-### Otros sistemas.
 ***
-```
-	- Microsoft Source Safe.
-	- Clear Case.
-	- Visual Studio Team System Source Control.
-	- YACC.
-	- DARCS.
-	- Apache Subversion (SVN).
-	- Git.
-	- Mercurial.
-```
-***
+#### ***- Instalación (Links a tutoriales online).***
 
-##Como instalar CVS *(Links a tutoriales online)*
+#####1. Windows.
+* [Instalación CVS en Windows](http://nideaderedes.urlansoft.com/2006/04/23/cvs-en-windows-en-menos-de-10-minutos/)
 
-###Windows
-[Como instalar CVS en Windows](http://nideaderedes.urlansoft.com/2006/04/23/cvs-en-windows-en-menos-de-10-minutos/)
+##### 2. Linux.
+* [Instalación CVS en Linux](https://ubuntulife.wordpress.com/2007/05/28/instalar-un-servidor-de-cvs-en-ubuntu/)
 
-### Linux
-[Como instalar CVS en Linux](https://ubuntulife.wordpress.com/2007/05/28/instalar-un-servidor-de-cvs-en-ubuntu/)
-
-### MacOS
-[Como instalar CVS en Mac OS X](http://macprogramadores.org/?q=xcodecvs)
-
+##### 3. MacOX.
+* [InstalarCVS en Mac OS X](http://cambrico.net/mac/instalar-cvs-en-mac-os-x-leopard)
 
 ***
 
-## Historia de CVS
-**CVS** comenzo a desarrollarse por [***Dick Grune***](http://www.dickgrune.com/ "Dick Grune") a mediados de los *80's* a partir de un sistema de control de versiones anterior llamado *"sistema de control de revisiones"* (RCS), que gestiona archivos individuales, pero no proyectos integrales.
-
-![Dick Grune](http://www.dickgrune.com/pictures/dick.jpg "Dick Grune")
-
-Dick Grune creo lo que se conoce como la *"version antigua"* de CVS para poder cooperar con sus estudiantes (*Erik Baalbergen y Maarten Waage*) en el ACK (*Ámsterdam Compiler Kit* compilador de C). Ya que los tres tenian diferentes horarios y solo podian programar en sus ratos libres. Inicialmente lo llamaron **cmt** (*commit versions independently*), porque les permitió combinar versiones independientes de codigo en un mismo proyecto.
-
-Grune lanzó públicamente el código (*un conjunto de scripts*) en Usenet para mod.sources el **23 de junio 1986**. Y por fin un sistema de control de versiones permitió a los desarrolladores trabajar simultaneamente de forma mas o menos independiente, pasando cada uno a trabajar sobre una copia del proyecto total que se iba sincronizando con el proyecto general.
-
-Unos años mas tarde, en **1989**, ***Brian Berliner*** tomo los scripts de Grune  y los reescribió en C, creando lo que sería la *"versión moderna"* de CVS, ya con una clara arquitectura cliente-servidor, tiempo despues se le unieron ***Jeff Polk*** y muchos otros colaboradores, lo liberaron para beneficio de la comunidad bajo la **GPL**.
-
-El **19 de noviembre de 1990**, CVS versión **1.0** fue presentado a la **Free Software Foundation** para su desarrollo y distribución. Así pasó a ser el sistema de control de versiones más usado del mundo.
-
-Desde entonces se han sucedido diversos cambios realizados por varias empresas, especialmente **Cygnus Support** y **Cyclic Software**. En la actualidad, casi todos los cambios recientes en **CVS** son obra de Cyclic. Y tras eliminar alguna dependencias CVS paso a ser parte oficial del proyecto **GNU**, además es usado por la mayoría de los grandes proyectos de software libre del mundo (*gcc, emacs, guile, gtk, gimp, gnome, linux, etc.*).
+***
+#### ***- Historia.***
+<p style="text-align: justify;"> **CVS** comenzo a desarrollarse por [***Dick Grune***](http://www.dickgrune.com/ "Dick Grune") a mediados de los *80's* a partir de un sistema de control de versiones anterior llamado *"Sistema de Control de Revisiones"* (RCS), que gestiona archivos individuales, pero no proyectos integrales. </p><p style="text-align: center;"> ![Dick Grune](http://www.dickgrune.com/pictures/dick.jpg "Dick Grune") </p>
+<p style="text-align: justify;"> Dick Grune creo lo que se conoce como la *"version antigua"* de CVS para poder cooperar con sus estudiantes (*Erik Baalbergen y Maarten Waage*) en el ACK (*Ámsterdam Compiler Kit* compilador de C). Ya que los tres tenian diferentes horarios y solo podian programar en sus ratos libres. Inicialmente lo llamaron **cmt** (*commit versions independently*), porque les permitió combinar versiones independientes de codigo en un mismo proyecto. Grune lanzó públicamente el código (*un conjunto de scripts*) en Usenet para mod.sources el **23 de junio 1986**. Y por fin un sistema de control de versiones permitió a los desarrolladores trabajar simultaneamente de forma mas o menos independiente, pasando cada uno a trabajar sobre una copia del proyecto total que se iba sincronizando con el proyecto general. </p> <p style="text-align: justify;"> Unos años mas tarde, en **1989**, ***Brian Berliner*** tomo los scripts de Grune  y los reescribió en C, creando lo que sería la *"versión moderna"* de CVS, ya con una clara arquitectura cliente-servidor, tiempo despues se le unieron ***Jeff Polk*** y muchos otros colaboradores, lo liberaron para beneficio de la comunidad bajo la **GPL**. </p> <p style="text-align: justify;"> El **19 de noviembre de 1990**, CVS versión **1.0** fue presentado a la **Free Software Foundation** para su desarrollo y distribución. Así pasó a ser el sistema de control de versiones más usado del mundo. Desde entonces se han sucedido diversos cambios realizados por varias empresas, especialmente **Cygnus Support** y **Cyclic Software**. En la actualidad, casi todos los cambios recientes en **CVS** son obra de Cyclic. Y tras eliminar alguna dependencias CVS paso a ser parte oficial del proyecto **GNU**, además es usado por la mayoría de los grandes proyectos de software libre del mundo (*gcc, emacs, guile, gtk, gimp, gnome, linux, etc.*). </p>
 
 ***
-##Características
-
-1. Arquitectura cliente-servidor: 
-	* El servidor guarda la(s) versión(es) actual(es) del proyecto y su historial (una version consolidada del proyecto). 
+***
+####***- Características.***
+1. Arquitectura cliente-servidor:  
+	* El servidor guarda la(s) versión(es) actual(es) del proyecto y su historial (una version consolidada del proyecto).</p> 
 	* El cliente o estacion de trabajo hace modificaciones al codigo y realiza las pruebas necesarias para satisfacer los requerimientos. Los clientes se conectan al servidor para sacar una copia completa del proyecto, esto se hace eventualmente para que puedan trabajar con esa copia y más tarde ingresar sus cambios.
 	* Debe exitir comunicacion entre cliente y el servidor al realizar operaciones CVS como checkins o actualizaciones, pero si se quiere editar o manipular las versiones actuales de los archivos los clientes pueden bajar una copia y realizar las operaciones disponibles a nivel local.
 
@@ -104,11 +85,7 @@ Desde entonces se han sucedido diversos cambios realizados por varias empresas, 
 	* Utilizar la orden de actualización con el fin de tener sus copias al día con la última versión que se encuentra en el servidor (esto elimina la necesidad de repetir las descargas del proyecto completo).
 	* Funcionar en cualquiera de los sistemas operativos más difundidos.
 	* Sacar copias YOU del proyecto al mismo tiempo.
-	* Sacar y comparar versiones sin necesidad de teclear una contraseña en proyectos de código abierto *("acceso de lectura anónimo")*.Solamente el ingreso de cambios requiere una contraseña en estos casos.
-
-
-### Limitaciones de CVS
-1. Los archivos en el repositorio sobre la plataforma CVS no pueden ser renombrados, estos deben ser agregados con otro nombre y luego eliminados.
+	* Sacar y comparar versiones sin necesidad de teclear una contraseña en proyectos de código abierto *("acceso de lectura anónimo")*.Solamente el ingreso de cambios requiere una contraseña en estos casos.s en el repositorio sobre la plataforma CVS no pueden ser renombrados, estos deben ser agregados con otro nombre y luego eliminados.
 
 2. El protocolo CVS no provee una manera de que los directorios puedan ser eliminados o renombrados, cada archivo en cada subdirectorio debe ser eliminado y re-agregado con el nuevo nombre. 
 
@@ -117,8 +94,8 @@ Desde entonces se han sucedido diversos cambios realizados por varias empresas, 
 4. Actividades como la planificacion, los releases, etc, quedan fuera de su ambito de trabajo y deben ser abordadas por las personas y otras herramietnas complementarias
 
 ***
-
-##Descripción de los comandos de _CVS_
+***
+####***- Descripción de los comandos de _CVS_.***
 
 El formato general de todos los comandos de _CVS_ es:
 
@@ -147,7 +124,7 @@ Opciones que son específicas del comando.
 Argumentos a los comandos.
 
 
-###Opciones globales
+####***- Opciones globales.***
 
 Las _'cvs_options'_ disponibles son:
 
@@ -196,7 +173,7 @@ Muestra la version y la información del copyright para _CVS_.
 
 Crea nuevos archivos de trabajo de lectura y escritura. Anula la configuración de la variable de entorno _$ CVSREAD_.
 
-###Añadir archivos y directorios en el repositorio
+####***- Añadir archivos y directorios en el repositorio.***
 
 	add [-k rcs-kflag] [-m message] files...
 
